@@ -6,7 +6,59 @@
 
     <groupId>hu.unideb.inf</groupId>
     <artifactId>notebookservice-parent</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>notebookservice-persistence</module>
+        <module>notebookservice-service-api</module>
+        <module>notebookservice-service-impl</module>
+    </modules>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.1.RELEASE</version>
+    </parent>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <notebookservice.version>0.0.1-SNAPSHOT</notebookservice.version>
+        <java.version>1.8</java.version>
+        <apache.commons.version>3.8.1</apache.commons.version>
+        <lombok.version>1.18.2</lombok.version>
+        <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>hu.unideb.inf</groupId>
+                <artifactId>notebookservice-commons-pojo</artifactId>
+                <version>${notebookservice.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
