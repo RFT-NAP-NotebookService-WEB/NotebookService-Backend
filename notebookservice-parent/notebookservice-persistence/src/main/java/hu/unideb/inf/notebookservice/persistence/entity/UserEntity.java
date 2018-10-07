@@ -7,7 +7,6 @@ import java.util.List;
 
 import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.UserColumnName.*;
 import static hu.unideb.inf.notebookservice.commons.pojo.table.TableName.TABLE_NAME_USER;
-import static javax.persistence.EnumType.STRING;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -24,18 +23,16 @@ public class UserEntity extends BaseEntity<Long> {
     private String password;
 
     @Column(name = COLUMN_NAME_ROLE)
-    @Enumerated(value = STRING)
-    private UserRoleEntity userRole;
+    private String userRole;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = TABLE_NAME_USER)
     private List<ServiceEntity> services;
 
     @Builder
-    public UserEntity(Long id, String username, String password, UserRoleEntity userRole, List<ServiceEntity> services) {
+    public UserEntity(Long id, String username, String password, String userRole) {
         super(id);
         this.username = username;
         this.password = password;
         this.userRole = userRole;
-        this.services = services;
     }
 }

@@ -14,7 +14,6 @@ import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.Servic
 import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.UserColumnName.COLUMN_NAME_USER_ID;
 import static hu.unideb.inf.notebookservice.commons.pojo.table.TableName.TABLE_NAME_SERVICE;
 import static hu.unideb.inf.notebookservice.commons.pojo.table.TableName.TABLE_NAME_SERVICE_HAS_MODIFICATION;
-import static javax.persistence.EnumType.STRING;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -31,8 +30,7 @@ public class ServiceEntity extends BaseEntity<Long> {
     private LocalDate endDate;
 
     @Column(name = COLUMN_NAME_STATUS)
-    @Enumerated(value = STRING)
-    private StatusEntity status;
+    private String status;
 
     @Column(name = COLUMN_NAME_FAULT)
     private String fault;
@@ -53,7 +51,7 @@ public class ServiceEntity extends BaseEntity<Long> {
     private List<ModificationEntity> modifications;
 
     @Builder
-    public ServiceEntity(Long id, LocalDate startDate, LocalDate endDate, StatusEntity status, String fault, UserEntity user, ProductEntity product, List<ModificationEntity> modifications) {
+    public ServiceEntity(Long id, LocalDate startDate, LocalDate endDate, String status, String fault, UserEntity user, ProductEntity product, List<ModificationEntity> modifications) {
         super(id);
         this.startDate = startDate;
         this.endDate = endDate;

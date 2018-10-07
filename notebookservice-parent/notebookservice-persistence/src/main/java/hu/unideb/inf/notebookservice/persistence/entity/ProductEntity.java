@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.ProductColumnName.*;
 import static hu.unideb.inf.notebookservice.commons.pojo.table.TableName.TABLE_NAME_PRODUCT;
 
@@ -24,19 +26,18 @@ public class ProductEntity extends BaseEntity<Long> {
     @ManyToOne
     private BrandEntity brand;
 
-    @OneToOne
-    private ServiceEntity service;
+    @OneToMany
+    private List<ServiceEntity> services;
 
     @ManyToOne
     private ClientEntity client;
 
     @Builder
-    public ProductEntity(Long id, String description, String type, BrandEntity brand, ServiceEntity service, ClientEntity client) {
+    public ProductEntity(Long id, String description, String type, BrandEntity brand, ClientEntity client) {
         super(id);
         this.description = description;
         this.type = type;
         this.brand = brand;
-        this.service = service;
         this.client = client;
     }
 }
