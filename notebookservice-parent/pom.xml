@@ -12,12 +12,13 @@
         <module>notebookservice-persistence</module>
         <module>notebookservice-service-api</module>
         <module>notebookservice-service-impl</module>
+        <module>notebookservice-backend</module>
     </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.1.RELEASE</version>
+        <version>2.0.5.RELEASE</version>
     </parent>
 
     <properties>
@@ -33,7 +34,27 @@
         <dependencies>
             <dependency>
                 <groupId>hu.unideb.inf</groupId>
+                <artifactId>notebookservice-commons-path</artifactId>
+                <version>${notebookservice.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.unideb.inf</groupId>
                 <artifactId>notebookservice-commons-pojo</artifactId>
+                <version>${notebookservice.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.unideb.inf</groupId>
+                <artifactId>notebookservice-service-api</artifactId>
+                <version>${notebookservice.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.unideb.inf</groupId>
+                <artifactId>notebookservice-service-impl</artifactId>
+                <version>${notebookservice.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.unideb.inf</groupId>
+                <artifactId>notebookservice-persistence</artifactId>
                 <version>${notebookservice.version}</version>
             </dependency>
         </dependencies>
