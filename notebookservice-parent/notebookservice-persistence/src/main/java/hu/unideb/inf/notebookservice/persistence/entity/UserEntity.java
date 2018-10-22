@@ -5,12 +5,13 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
+import static hu.unideb.inf.notebookservice.commons.pojo.exclusion.FieldExclusion.EXCLUDE_PASSWORD;
 import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.UserColumnName.*;
 import static hu.unideb.inf.notebookservice.commons.pojo.table.TableName.TABLE_NAME_USER;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
+@ToString(callSuper = true, exclude = "password")
 @NoArgsConstructor
 @Entity
 @Table(name = TABLE_NAME_USER, uniqueConstraints = @UniqueConstraint(columnNames = COLUMN_NAME_USERNAME))
