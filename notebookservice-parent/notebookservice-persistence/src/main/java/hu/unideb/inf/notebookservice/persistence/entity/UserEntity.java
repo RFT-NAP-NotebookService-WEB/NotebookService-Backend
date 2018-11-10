@@ -1,5 +1,6 @@
 package hu.unideb.inf.notebookservice.persistence.entity;
 
+import hu.unideb.inf.notebookservice.commons.pojo.enumeration.UserRole;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,13 +25,13 @@ public class UserEntity extends BaseEntity<Long> {
     private String password;
 
     @Column(name = COLUMN_NAME_ROLE)
-    private String userRole;
+    private UserRole userRole;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = TABLE_NAME_USER)
     private List<ServiceEntity> services;
 
     @Builder
-    public UserEntity(Long id, String username, String password, String userRole) {
+    public UserEntity(Long id, String username, String password, UserRole userRole) {
         super(id);
         this.username = username;
         this.password = password;

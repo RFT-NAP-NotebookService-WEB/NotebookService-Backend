@@ -24,7 +24,7 @@ public class RegistrationRestController {
         ResponseEntity result;
         try {
             registrationService.register(registrationRequest);
-            result = ResponseEntity.ok(registrationRequest.getUsername());
+            result = ResponseEntity.ok(registrationRequest);
         } catch (Exception e) {
             result = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("400");
         }

@@ -1,5 +1,6 @@
 package hu.unideb.inf.notebookservice.service.domain;
 
+import hu.unideb.inf.notebookservice.commons.pojo.enumeration.UserRole;
 import lombok.Builder;
 import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,5 +19,5 @@ public class User {
     @JsonIgnore
     private String passwordConfirm;
 
-    private String userRole;
+    private UserRole userRole;
 }

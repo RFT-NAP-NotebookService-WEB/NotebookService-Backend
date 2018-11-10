@@ -17,12 +17,10 @@ public class RegisterServiceImpl implements RegistrationService {
     private final RegistrationRequestToUserConverter converter;
 
     @Override
-    public User register(RegistrationRequest registrationRequest) throws Exception {
+    public void register(RegistrationRequest registrationRequest) {
 
         User convertedUser = converter.convert(registrationRequest);
 
-        User savedUser = userService.saveUser(convertedUser);
-
-        return savedUser;
+        userService.saveUser(convertedUser);
     }
 }

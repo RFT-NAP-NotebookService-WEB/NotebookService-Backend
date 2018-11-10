@@ -20,13 +20,13 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public User saveUser(User user) {
+    public void saveUser(User user) {
 
         UserEntity userEntity = toEntity.convert(user);
 
         UserEntity saved = userRepository.save(userEntity);
 
-        return toDomain.convert(saved);
+        toDomain.convert(saved);
     }
 
     @Override

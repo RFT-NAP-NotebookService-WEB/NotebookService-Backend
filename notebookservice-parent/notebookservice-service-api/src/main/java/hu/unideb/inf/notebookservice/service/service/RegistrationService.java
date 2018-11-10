@@ -5,5 +5,5 @@ import hu.unideb.inf.notebookservice.service.domain.User;
 
 public interface RegistrationService {
 
-    User register(RegistrationRequest registrationRequest) throws Exception;
+    void register(RegistrationRequest registrationRequest);
 }
