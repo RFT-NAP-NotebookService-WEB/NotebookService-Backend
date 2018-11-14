@@ -7,7 +7,12 @@ import hu.unideb.inf.notebookservice.service.converter.UserToUserEntityConverter
 import hu.unideb.inf.notebookservice.service.domain.User;
 import hu.unideb.inf.notebookservice.service.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.jboss.logging.ParameterConverter;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +36,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUsername(String username) {
-
         UserEntity userEntity = userRepository.findByUsername(username);
 
         return toDomain.convert(userEntity);
