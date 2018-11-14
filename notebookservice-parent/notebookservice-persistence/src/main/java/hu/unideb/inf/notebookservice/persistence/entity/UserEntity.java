@@ -6,7 +6,6 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.pojo.exclusion.FieldExclusion.EXCLUDE_PASSWORD;
 import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.UserColumnName.*;
 import static hu.unideb.inf.notebookservice.commons.pojo.table.TableName.TABLE_NAME_USER;
 

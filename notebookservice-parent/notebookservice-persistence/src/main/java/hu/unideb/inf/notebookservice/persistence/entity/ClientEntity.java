@@ -33,12 +33,11 @@ public class ClientEntity extends BaseEntity<Long> {
     private List<ProductEntity> products;
 
     @Builder
-    public ClientEntity(Long id, String firstName, String lastName, String email, String phone, List<ProductEntity> products) {
+    public ClientEntity(Long id, String firstName, String lastName, String email, String phone) {
         super(id);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
-        this.products = products;
     }
 }

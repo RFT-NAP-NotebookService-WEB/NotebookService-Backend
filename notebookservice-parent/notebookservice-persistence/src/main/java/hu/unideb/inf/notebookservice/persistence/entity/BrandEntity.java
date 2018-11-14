@@ -24,9 +24,8 @@ public class BrandEntity extends BaseEntity<Long> {
     private List<ProductEntity> products;
 
     @Builder
-    public BrandEntity(Long id, String name, List<ProductEntity> products) {
+    public BrandEntity(Long id, String name) {
         super(id);
         this.name = name;
-        this.products = products;
     }
 }

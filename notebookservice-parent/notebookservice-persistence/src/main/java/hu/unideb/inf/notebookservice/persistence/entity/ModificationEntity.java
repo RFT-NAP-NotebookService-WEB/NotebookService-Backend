@@ -27,10 +27,9 @@ public class ModificationEntity extends BaseEntity<Long> {
     private List<ServiceEntity> servicies;
 
     @Builder
-    public ModificationEntity(Long id, String name, int price, List<ServiceEntity> servicies) {
+    public ModificationEntity(Long id, String name, int price) {
         super(id);
         this.name = name;
         this.price = price;
-        this.servicies = servicies;
     }
 }
