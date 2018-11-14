@@ -8,17 +8,16 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
-@Import(PersistenceConfiguration.class)
+@Import({PersistenceConfiguration.class, SecurityConfiguration.class})
 public class Application extends SpringBootServletInitializer {
 
     public static void main(final String[] args) {
-
         SpringApplication.run(Application.class, args);
     }
 
-    @Override
-    protected final SpringApplicationBuilder configure(
-            final SpringApplicationBuilder application) {
-        return application.sources(Application.class);
-    }
+//    @Override
+//    protected final SpringApplicationBuilder configure(
+//            final SpringApplicationBuilder application) {
+//        return application.sources(Application.class);
+//    }
 }
