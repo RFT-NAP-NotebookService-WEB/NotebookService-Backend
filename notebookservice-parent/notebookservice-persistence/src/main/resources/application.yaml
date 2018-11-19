@@ -19,3 +19,6 @@ spring:
     url: jdbc:mysql://localhost:3306/notebookservice?useSSL=false
     platform: mysql
     initialization-mode: always
+logging:
+  level:
+    root: info

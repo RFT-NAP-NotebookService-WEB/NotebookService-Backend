@@ -1,8 +1,16 @@
 package hu.unideb.inf.notebookservice.persistence.entity;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import java.util.List;
 
@@ -24,7 +32,7 @@ public class ModificationEntity extends BaseEntity<Long> {
     private int price;
 
     @ManyToMany(mappedBy = "modifications",fetch = FetchType.LAZY)
-    private List<ServiceEntity> servicies;
+    private List<MaintenanceEntity> maintenances;
 
     @Builder
     public ModificationEntity(Long id, String name, int price) {

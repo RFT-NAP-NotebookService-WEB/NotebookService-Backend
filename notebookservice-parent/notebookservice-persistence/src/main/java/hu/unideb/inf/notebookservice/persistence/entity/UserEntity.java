@@ -1,9 +1,18 @@
 package hu.unideb.inf.notebookservice.persistence.entity;
 
 import hu.unideb.inf.notebookservice.commons.pojo.enumeration.UserRole;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import java.util.List;
 
 import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.UserColumnName.*;
@@ -27,7 +36,7 @@ public class UserEntity extends BaseEntity<Long> {
     private UserRole userRole;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = TABLE_NAME_USER)
-    private List<ServiceEntity> services;
+    private List<MaintenanceEntity> maintenances;
 
     @Builder
     public UserEntity(Long id, String username, String password, UserRole userRole) {
