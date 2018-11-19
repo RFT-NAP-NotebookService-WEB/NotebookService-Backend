@@ -12,7 +12,7 @@
         <module>notebookservice-persistence</module>
         <module>notebookservice-service-api</module>
         <module>notebookservice-service-impl</module>
-        <module>notebookservice-backend</module>
+        <module>notebookservice-web</module>
     </modules>
 
     <parent>
