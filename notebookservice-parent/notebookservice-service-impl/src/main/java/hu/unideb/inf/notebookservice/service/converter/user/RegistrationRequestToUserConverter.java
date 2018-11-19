@@ -1,4 +1,4 @@
-package hu.unideb.inf.notebookservice.service.converter;
+package hu.unideb.inf.notebookservice.service.converter.user;
 
 import hu.unideb.inf.notebookservice.commons.pojo.enumeration.UserRole;
 import hu.unideb.inf.notebookservice.commons.pojo.request.RegistrationRequest;
