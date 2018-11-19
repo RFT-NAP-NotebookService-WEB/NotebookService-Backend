@@ -1,4 +1,4 @@
-package hu.unideb.inf.notebookservice.backend.security;
+package hu.unideb.inf.notebookservice.web.security;
 
 import hu.unideb.inf.notebookservice.service.domain.User;
 import hu.unideb.inf.notebookservice.service.service.UserService;

@@ -1,6 +1,6 @@
-package hu.unideb.inf.notebookservice.backend.rest;
+package hu.unideb.inf.notebookservice.web.rest;
 
-import hu.unideb.inf.notebookservice.backend.security.SecurityContextHolder;
+import hu.unideb.inf.notebookservice.web.security.SecurityContextHolder;
 import hu.unideb.inf.notebookservice.commons.pojo.path.LoginPath;
 import hu.unideb.inf.notebookservice.commons.pojo.request.RegistrationRequest;
 import hu.unideb.inf.notebookservice.commons.pojo.response.UserResponse;

@@ -1,4 +1,4 @@
-package hu.unideb.inf.notebookservice.backend.rest;
+package hu.unideb.inf.notebookservice.web.rest;
 
 import hu.unideb.inf.notebookservice.commons.pojo.request.BrandRequest;
 import hu.unideb.inf.notebookservice.service.domain.Brand;

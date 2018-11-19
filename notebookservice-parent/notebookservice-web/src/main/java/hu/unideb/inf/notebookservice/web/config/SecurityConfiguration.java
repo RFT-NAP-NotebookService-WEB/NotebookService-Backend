@@ -1,7 +1,7 @@
-package hu.unideb.inf.notebookservice.backend.config;
+package hu.unideb.inf.notebookservice.web.config;
 
-import hu.unideb.inf.notebookservice.backend.security.NotebookServiceAuthEntryPoint;
-import hu.unideb.inf.notebookservice.backend.security.NotebookServiceUserDetailsService;
+import hu.unideb.inf.notebookservice.web.security.NotebookServiceAuthEntryPoint;
+import hu.unideb.inf.notebookservice.web.security.NotebookServiceUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

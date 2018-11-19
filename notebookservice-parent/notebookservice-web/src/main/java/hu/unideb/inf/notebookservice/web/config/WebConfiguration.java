@@ -1,4 +1,4 @@
-package hu.unideb.inf.notebookservice.backend.config;
+package hu.unideb.inf.notebookservice.web.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.List;
 
 @Configuration
-@ComponentScan("hu.unideb.inf.notebookservice.backend")
+@ComponentScan("hu.unideb.inf.notebookservice.web")
 @Import(ServiceConfiguration.class)
 public class WebConfiguration implements WebMvcConfigurer {
 

@@ -1,4 +1,4 @@
-package hu.unideb.inf.notebookservice.backend.security;
+package hu.unideb.inf.notebookservice.web.security;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageConverter;

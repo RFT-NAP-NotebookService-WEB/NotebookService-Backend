@@ -1,4 +1,4 @@
-package hu.unideb.inf.notebookservice.backend.config;
+package hu.unideb.inf.notebookservice.web.config;
 
 import hu.unideb.inf.notebookservice.persistence.config.PersistenceConfiguration;
 import org.springframework.boot.SpringApplication;
