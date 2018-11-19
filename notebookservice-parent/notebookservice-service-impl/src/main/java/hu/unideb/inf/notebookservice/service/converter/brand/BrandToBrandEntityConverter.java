@@ -1,4 +1,4 @@
-package hu.unideb.inf.notebookservice.service.converter;
+package hu.unideb.inf.notebookservice.service.converter.brand;
 
 import hu.unideb.inf.notebookservice.persistence.entity.BrandEntity;
 import hu.unideb.inf.notebookservice.service.domain.Brand;

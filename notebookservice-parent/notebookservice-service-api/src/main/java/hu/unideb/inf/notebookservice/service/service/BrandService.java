@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface BrandService {
 
-    void addBrand(BrandRequest brandRequest);
+    void saveBrand(BrandRequest brandRequest);
 
-    Brand findByName(String name);
+    Brand findById(Long id);
 
     List<Brand> findAll();
 }

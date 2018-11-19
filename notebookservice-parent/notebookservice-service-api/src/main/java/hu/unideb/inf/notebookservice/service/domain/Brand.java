@@ -12,8 +12,5 @@ import lombok.NoArgsConstructor;
 public class Brand {
 
     private Long id;
-
     private String name;
-
-//    private List<Product> products;
 }
