@@ -1,7 +1,5 @@
 package hu.unideb.inf.notebookservice.backend.config;
 
-//import hu.unideb.inf.notebookservice.backend.security.NotebookServiceAuthEntryPoint;
-//import hu.unideb.inf.notebookservice.backend.security.NotebookServiceUserDetailsService;
 import hu.unideb.inf.notebookservice.backend.security.NotebookServiceAuthEntryPoint;
 import hu.unideb.inf.notebookservice.backend.security.NotebookServiceUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +26,7 @@ import java.util.LinkedHashMap;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String BASIC_AUTH_REALM_NAME = "notebookservice";
