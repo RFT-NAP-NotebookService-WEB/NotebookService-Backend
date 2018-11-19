@@ -1,8 +1,20 @@
 package hu.unideb.inf.notebookservice.persistence.entity;
 
-import lombok.*;
+import hu.unideb.inf.notebookservice.commons.pojo.enumeration.Status;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,7 +33,7 @@ import static hu.unideb.inf.notebookservice.commons.pojo.table.TableName.TABLE_N
 @NoArgsConstructor
 @Entity
 @Table(name = TABLE_NAME_SERVICE)
-public class ServiceEntity extends BaseEntity<Long> {
+public class MaintenanceEntity extends BaseEntity<Long> {
 
     @Column(name = COLUMN_NAME_START_DATE)
     private LocalDate startDate;
@@ -30,7 +42,7 @@ public class ServiceEntity extends BaseEntity<Long> {
     private LocalDate endDate;
 
     @Column(name = COLUMN_NAME_STATUS)
-    private String status;
+    private Status status;
 
     @Column(name = COLUMN_NAME_FAULT)
     private String fault;
@@ -51,7 +63,7 @@ public class ServiceEntity extends BaseEntity<Long> {
     private List<ModificationEntity> modifications;
 
     @Builder
-    public ServiceEntity(Long id, LocalDate startDate, LocalDate endDate, String status, String fault, UserEntity user, ProductEntity product, List<ModificationEntity> modifications) {
+    public MaintenanceEntity(Long id, LocalDate startDate, LocalDate endDate, Status status, String fault, UserEntity user, ProductEntity product, List<ModificationEntity> modifications) {
         super(id);
         this.startDate = startDate;
         this.endDate = endDate;
