@@ -1,0 +1,35 @@
+version: '3'
+services:
+  database:
+    container_name: mysql
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: notebookservice
+    ports:
+      - 3306:3306
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - 9080:8080
+    depends_on:
+      - database
+  notebookservice:
+    container_name: app
+    image: notebookservice-web
+    restart: always
+    depends_on:
+      - database
+    ports:
+      - 8080:8080
+    environment:
+      - DATABASE_HOST=database
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=notebookservice  
+      - DATABASE_PORT=3306
+    links:
+      - "database:notebookservice"
