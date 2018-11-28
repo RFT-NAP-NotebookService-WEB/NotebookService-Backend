@@ -1,10 +1,10 @@
 package hu.unideb.inf.notebookservice.web.rest;
 
-import hu.unideb.inf.notebookservice.commons.pojo.path.LoginPath;
-import hu.unideb.inf.notebookservice.commons.pojo.request.RegistrationRequest;
-import hu.unideb.inf.notebookservice.commons.pojo.response.UserResponse;
+import hu.unideb.inf.notebookservice.commons.path.LoginPath;
+import hu.unideb.inf.notebookservice.commons.request.RegistrationRequest;
+import hu.unideb.inf.notebookservice.commons.response.UserResponse;
 import hu.unideb.inf.notebookservice.service.domain.User;
-import hu.unideb.inf.notebookservice.service.service.UserService;
+import hu.unideb.inf.notebookservice.service.interfaces.UserService;
 import hu.unideb.inf.notebookservice.web.security.SecurityContextHolder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.pojo.path.RegistrationPath.REGISTRATION_URL;
+import static hu.unideb.inf.notebookservice.commons.path.RegistrationPath.REGISTRATION_URL;
 
 
 @RestController
@@ -51,7 +51,7 @@ public class UserRestController {
                 .build();
     }
 
-    //    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = "/users")
     public ResponseEntity<?> getAllBrand() {
         List<User> allUser = userService.findAll();

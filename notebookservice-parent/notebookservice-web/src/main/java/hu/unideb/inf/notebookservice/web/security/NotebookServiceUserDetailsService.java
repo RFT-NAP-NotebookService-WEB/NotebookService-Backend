@@ -1,7 +1,7 @@
 package hu.unideb.inf.notebookservice.web.security;
 
 import hu.unideb.inf.notebookservice.service.domain.User;
-import hu.unideb.inf.notebookservice.service.service.UserService;
+import hu.unideb.inf.notebookservice.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.userdetails.UserDetails;

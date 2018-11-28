@@ -1,8 +1,8 @@
 package hu.unideb.inf.notebookservice.web.rest;
 
-import hu.unideb.inf.notebookservice.commons.pojo.request.MaintenanceRequest;
+import hu.unideb.inf.notebookservice.commons.request.MaintenanceRequest;
 import hu.unideb.inf.notebookservice.service.domain.Maintenance;
-import hu.unideb.inf.notebookservice.service.service.MaintenanceService;
+import hu.unideb.inf.notebookservice.service.interfaces.MaintenanceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.pojo.path.MaintenancePath.MAINTENANCE_ADD;
-import static hu.unideb.inf.notebookservice.commons.pojo.path.MaintenancePath.MAINTENANCE_GET_ALL;
-import static hu.unideb.inf.notebookservice.commons.pojo.path.MaintenancePath.MAINTENANCE_GET_ONE;
+import static hu.unideb.inf.notebookservice.commons.path.MaintenancePath.MAINTENANCE_ADD;
+import static hu.unideb.inf.notebookservice.commons.path.MaintenancePath.MAINTENANCE_GET_ALL;
+import static hu.unideb.inf.notebookservice.commons.path.MaintenancePath.MAINTENANCE_GET_ONE;
 
 @RestController
 @RequiredArgsConstructor

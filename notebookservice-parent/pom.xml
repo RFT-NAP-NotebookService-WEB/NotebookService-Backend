@@ -13,6 +13,7 @@
         <module>notebookservice-service-api</module>
         <module>notebookservice-service-impl</module>
         <module>notebookservice-web</module>
+        <module>notebookservice-commons</module>
     </modules>
 
     <parent>
@@ -20,6 +21,8 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.5.RELEASE</version>
     </parent>
+
+    <name>NotebookService</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,12 +37,7 @@
         <dependencies>
             <dependency>
                 <groupId>hu.unideb.inf</groupId>
-                <artifactId>notebookservice-commons-path</artifactId>
-                <version>${notebookservice.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>hu.unideb.inf</groupId>
-                <artifactId>notebookservice-commons-pojo</artifactId>
+                <artifactId>notebookservice-commons</artifactId>
                 <version>${notebookservice.version}</version>
             </dependency>
             <dependency>

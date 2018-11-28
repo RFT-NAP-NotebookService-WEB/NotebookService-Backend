@@ -43,7 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/service/**").hasRole("SERVICE")
+                .antMatchers("/interfaces/**").hasRole("SERVICE")
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login")

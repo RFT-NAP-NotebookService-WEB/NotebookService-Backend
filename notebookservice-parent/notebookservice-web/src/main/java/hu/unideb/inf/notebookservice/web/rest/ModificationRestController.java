@@ -1,8 +1,8 @@
 package hu.unideb.inf.notebookservice.web.rest;
 
-import hu.unideb.inf.notebookservice.commons.pojo.request.ModificationRequest;
+import hu.unideb.inf.notebookservice.commons.request.ModificationRequest;
 import hu.unideb.inf.notebookservice.service.domain.Modification;
-import hu.unideb.inf.notebookservice.service.service.ModificationService;
+import hu.unideb.inf.notebookservice.service.interfaces.ModificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.pojo.path.ModificationPath.MODIFICATION_ADD;
-import static hu.unideb.inf.notebookservice.commons.pojo.path.ModificationPath.MODIFICATION_GET_ALL;
-import static hu.unideb.inf.notebookservice.commons.pojo.path.ModificationPath.MODIFICATION_GET_ONE;
+import static hu.unideb.inf.notebookservice.commons.path.ModificationPath.MODIFICATION_ADD;
+import static hu.unideb.inf.notebookservice.commons.path.ModificationPath.MODIFICATION_GET_ALL;
+import static hu.unideb.inf.notebookservice.commons.path.ModificationPath.MODIFICATION_GET_ONE;
 
 @RestController
 @RequiredArgsConstructor

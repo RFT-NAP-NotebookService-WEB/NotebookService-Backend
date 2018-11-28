@@ -1,8 +1,8 @@
 package hu.unideb.inf.notebookservice.web.rest;
 
-import hu.unideb.inf.notebookservice.commons.pojo.request.ClientRequest;
+import hu.unideb.inf.notebookservice.commons.request.ClientRequest;
 import hu.unideb.inf.notebookservice.service.domain.Client;
-import hu.unideb.inf.notebookservice.service.service.ClientService;
+import hu.unideb.inf.notebookservice.service.interfaces.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.pojo.path.ClientPath.CLIENT_ADD;
-import static hu.unideb.inf.notebookservice.commons.pojo.path.ClientPath.CLIENT_GET_ALL;
-import static hu.unideb.inf.notebookservice.commons.pojo.path.ClientPath.CLIENT_GET_ONE;
+import static hu.unideb.inf.notebookservice.commons.path.ClientPath.CLIENT_ADD;
+import static hu.unideb.inf.notebookservice.commons.path.ClientPath.CLIENT_GET_ALL;
+import static hu.unideb.inf.notebookservice.commons.path.ClientPath.CLIENT_GET_ONE;
 
 @RestController
 @RequiredArgsConstructor
