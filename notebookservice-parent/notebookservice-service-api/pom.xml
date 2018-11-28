@@ -9,12 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <name>NotebookService-Service-API</name>
+
     <artifactId>notebookservice-service-api</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>hu.unideb.inf</groupId>
-            <artifactId>notebookservice-commons-pojo</artifactId>
+            <artifactId>notebookservice-commons</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

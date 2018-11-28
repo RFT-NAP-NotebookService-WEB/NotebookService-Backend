@@ -1,6 +1,6 @@
 package hu.unideb.inf.notebookservice.service.domain;
 
-import hu.unideb.inf.notebookservice.commons.pojo.enumeration.Status;
+import hu.unideb.inf.notebookservice.commons.enumeration.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

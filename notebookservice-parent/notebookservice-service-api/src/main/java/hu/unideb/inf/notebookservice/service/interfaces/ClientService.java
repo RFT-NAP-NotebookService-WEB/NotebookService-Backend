@@ -1,6 +1,6 @@
-package hu.unideb.inf.notebookservice.service.service;
+package hu.unideb.inf.notebookservice.service.interfaces;
 
-import hu.unideb.inf.notebookservice.commons.pojo.request.ClientRequest;
+import hu.unideb.inf.notebookservice.commons.request.ClientRequest;
 import hu.unideb.inf.notebookservice.service.domain.Client;
 
 import java.util.List;

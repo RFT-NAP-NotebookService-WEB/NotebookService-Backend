@@ -1,7 +1,7 @@
 package hu.unideb.inf.notebookservice.service.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import hu.unideb.inf.notebookservice.commons.pojo.enumeration.UserRole;
+import hu.unideb.inf.notebookservice.commons.enumeration.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
