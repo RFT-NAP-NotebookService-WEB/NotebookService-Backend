@@ -1,6 +1,6 @@
 package hu.unideb.inf.notebookservice.service.impl;
 
-import hu.unideb.inf.notebookservice.commons.pojo.request.ClientRequest;
+import hu.unideb.inf.notebookservice.commons.request.ClientRequest;
 import hu.unideb.inf.notebookservice.persistence.entity.ClientEntity;
 import hu.unideb.inf.notebookservice.persistence.repository.ClientRepository;
 import hu.unideb.inf.notebookservice.service.converter.client.ClientEntityListToClientConverter;
@@ -8,7 +8,7 @@ import hu.unideb.inf.notebookservice.service.converter.client.ClientEntityToClie
 import hu.unideb.inf.notebookservice.service.converter.client.ClientRequestToClientConverter;
 import hu.unideb.inf.notebookservice.service.converter.client.ClientToClientEntityConverter;
 import hu.unideb.inf.notebookservice.service.domain.Client;
-import hu.unideb.inf.notebookservice.service.service.ClientService;
+import hu.unideb.inf.notebookservice.service.interfaces.ClientService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

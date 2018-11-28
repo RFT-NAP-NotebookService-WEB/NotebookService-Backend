@@ -1,6 +1,6 @@
 package hu.unideb.inf.notebookservice.service.impl;
 
-import hu.unideb.inf.notebookservice.commons.pojo.request.BrandRequest;
+import hu.unideb.inf.notebookservice.commons.request.BrandRequest;
 import hu.unideb.inf.notebookservice.persistence.entity.BrandEntity;
 import hu.unideb.inf.notebookservice.persistence.repository.BrandRepository;
 import hu.unideb.inf.notebookservice.service.converter.brand.BrandEntityListToBrandListConverter;
@@ -8,7 +8,7 @@ import hu.unideb.inf.notebookservice.service.converter.brand.BrandEntityToBrandC
 import hu.unideb.inf.notebookservice.service.converter.brand.BrandRequestToBrandConverter;
 import hu.unideb.inf.notebookservice.service.converter.brand.BrandToBrandEntityConverter;
 import hu.unideb.inf.notebookservice.service.domain.Brand;
-import hu.unideb.inf.notebookservice.service.service.BrandService;
+import hu.unideb.inf.notebookservice.service.interfaces.BrandService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

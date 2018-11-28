@@ -1,6 +1,6 @@
 package hu.unideb.inf.notebookservice.service.impl;
 
-import hu.unideb.inf.notebookservice.commons.pojo.request.MaintenanceRequest;
+import hu.unideb.inf.notebookservice.commons.request.MaintenanceRequest;
 import hu.unideb.inf.notebookservice.persistence.entity.MaintenanceEntity;
 import hu.unideb.inf.notebookservice.persistence.repository.MaintenanceRepository;
 import hu.unideb.inf.notebookservice.service.converter.maintenance.MaintenanceEntityListToMaintenanceListConverter;
@@ -8,7 +8,7 @@ import hu.unideb.inf.notebookservice.service.converter.maintenance.MaintenanceEn
 import hu.unideb.inf.notebookservice.service.converter.maintenance.MaintenanceRequestToMaintenanceConverter;
 import hu.unideb.inf.notebookservice.service.converter.maintenance.MaintenanceToMaintenanceEntityConverter;
 import hu.unideb.inf.notebookservice.service.domain.Maintenance;
-import hu.unideb.inf.notebookservice.service.service.MaintenanceService;
+import hu.unideb.inf.notebookservice.service.interfaces.MaintenanceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package hu.unideb.inf.notebookservice.service.converter.modification;
 
 import hu.unideb.inf.notebookservice.service.domain.Modification;
-import hu.unideb.inf.notebookservice.service.service.ModificationService;
+import hu.unideb.inf.notebookservice.service.interfaces.ModificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

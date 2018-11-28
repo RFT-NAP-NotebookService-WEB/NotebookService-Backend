@@ -1,7 +1,7 @@
 package hu.unideb.inf.notebookservice.service.converter.user;
 
-import hu.unideb.inf.notebookservice.commons.pojo.enumeration.UserRole;
-import hu.unideb.inf.notebookservice.commons.pojo.request.RegistrationRequest;
+import hu.unideb.inf.notebookservice.commons.enumeration.UserRole;
+import hu.unideb.inf.notebookservice.commons.request.RegistrationRequest;
 import hu.unideb.inf.notebookservice.service.domain.User;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

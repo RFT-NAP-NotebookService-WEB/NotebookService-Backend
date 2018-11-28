@@ -1,6 +1,6 @@
 package hu.unideb.inf.notebookservice.service.impl;
 
-import hu.unideb.inf.notebookservice.commons.pojo.request.ModificationRequest;
+import hu.unideb.inf.notebookservice.commons.request.ModificationRequest;
 import hu.unideb.inf.notebookservice.persistence.entity.ModificationEntity;
 import hu.unideb.inf.notebookservice.persistence.repository.ModificationRepository;
 import hu.unideb.inf.notebookservice.service.converter.modification.ModificationEntityListToModificationListConverter;
@@ -8,7 +8,7 @@ import hu.unideb.inf.notebookservice.service.converter.modification.Modification
 import hu.unideb.inf.notebookservice.service.converter.modification.ModificationRequestToModificationConverter;
 import hu.unideb.inf.notebookservice.service.converter.modification.ModificationToModificationEntityConverter;
 import hu.unideb.inf.notebookservice.service.domain.Modification;
-import hu.unideb.inf.notebookservice.service.service.ModificationService;
+import hu.unideb.inf.notebookservice.service.interfaces.ModificationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

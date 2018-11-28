@@ -1,6 +1,6 @@
 package hu.unideb.inf.notebookservice.service.impl;
 
-import hu.unideb.inf.notebookservice.commons.pojo.request.RegistrationRequest;
+import hu.unideb.inf.notebookservice.commons.request.RegistrationRequest;
 import hu.unideb.inf.notebookservice.persistence.entity.UserEntity;
 import hu.unideb.inf.notebookservice.persistence.repository.UserRepository;
 import hu.unideb.inf.notebookservice.service.converter.user.RegistrationRequestToUserConverter;
@@ -8,7 +8,7 @@ import hu.unideb.inf.notebookservice.service.converter.user.UserEntityListToUser
 import hu.unideb.inf.notebookservice.service.converter.user.UserEntityToUserConverter;
 import hu.unideb.inf.notebookservice.service.converter.user.UserToUserEntityConverter;
 import hu.unideb.inf.notebookservice.service.domain.User;
-import hu.unideb.inf.notebookservice.service.service.UserService;
+import hu.unideb.inf.notebookservice.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

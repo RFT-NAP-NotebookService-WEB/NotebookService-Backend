@@ -9,6 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <name>NotebookService-Service-Implementation</name>
+
     <artifactId>notebookservice-service-impl</artifactId>
 
     <dependencies>

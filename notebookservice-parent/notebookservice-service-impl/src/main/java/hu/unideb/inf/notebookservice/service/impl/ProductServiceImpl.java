@@ -1,6 +1,6 @@
 package hu.unideb.inf.notebookservice.service.impl;
 
-import hu.unideb.inf.notebookservice.commons.pojo.request.ProductRequest;
+import hu.unideb.inf.notebookservice.commons.request.ProductRequest;
 import hu.unideb.inf.notebookservice.persistence.entity.ProductEntity;
 import hu.unideb.inf.notebookservice.persistence.repository.ProductRepository;
 import hu.unideb.inf.notebookservice.service.converter.product.ProductEntityListToProductListConverter;
@@ -8,7 +8,7 @@ import hu.unideb.inf.notebookservice.service.converter.product.ProductEntityToPr
 import hu.unideb.inf.notebookservice.service.converter.product.ProductRequestToProductConverter;
 import hu.unideb.inf.notebookservice.service.converter.product.ProductToProductEntityConverter;
 import hu.unideb.inf.notebookservice.service.domain.Product;
-import hu.unideb.inf.notebookservice.service.service.ProductService;
+import hu.unideb.inf.notebookservice.service.interfaces.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

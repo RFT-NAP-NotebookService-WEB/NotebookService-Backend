@@ -1,10 +1,10 @@
 package hu.unideb.inf.notebookservice.service.converter.maintenance;
 
-import hu.unideb.inf.notebookservice.commons.pojo.request.MaintenanceRequest;
+import hu.unideb.inf.notebookservice.commons.request.MaintenanceRequest;
 import hu.unideb.inf.notebookservice.service.converter.modification.ModificationIdListToModificationListConverter;
 import hu.unideb.inf.notebookservice.service.domain.Maintenance;
-import hu.unideb.inf.notebookservice.service.service.ProductService;
-import hu.unideb.inf.notebookservice.service.service.UserService;
+import hu.unideb.inf.notebookservice.service.interfaces.ProductService;
+import hu.unideb.inf.notebookservice.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

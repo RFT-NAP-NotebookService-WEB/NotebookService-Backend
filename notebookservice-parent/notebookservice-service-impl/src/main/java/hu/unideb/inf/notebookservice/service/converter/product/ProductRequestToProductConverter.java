@@ -1,9 +1,9 @@
 package hu.unideb.inf.notebookservice.service.converter.product;
 
-import hu.unideb.inf.notebookservice.commons.pojo.request.ProductRequest;
+import hu.unideb.inf.notebookservice.commons.request.ProductRequest;
 import hu.unideb.inf.notebookservice.service.domain.Product;
-import hu.unideb.inf.notebookservice.service.service.BrandService;
-import hu.unideb.inf.notebookservice.service.service.ClientService;
+import hu.unideb.inf.notebookservice.service.interfaces.BrandService;
+import hu.unideb.inf.notebookservice.service.interfaces.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
