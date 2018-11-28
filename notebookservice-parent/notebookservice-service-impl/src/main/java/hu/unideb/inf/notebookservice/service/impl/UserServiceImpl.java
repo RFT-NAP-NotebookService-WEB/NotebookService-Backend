@@ -4,6 +4,7 @@ import hu.unideb.inf.notebookservice.commons.pojo.request.RegistrationRequest;
 import hu.unideb.inf.notebookservice.persistence.entity.UserEntity;
 import hu.unideb.inf.notebookservice.persistence.repository.UserRepository;
 import hu.unideb.inf.notebookservice.service.converter.user.RegistrationRequestToUserConverter;
+import hu.unideb.inf.notebookservice.service.converter.user.UserEntityListToUserListConverter;
 import hu.unideb.inf.notebookservice.service.converter.user.UserEntityToUserConverter;
 import hu.unideb.inf.notebookservice.service.converter.user.UserToUserEntityConverter;
 import hu.unideb.inf.notebookservice.service.domain.User;
@@ -12,11 +13,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
+    private final UserEntityListToUserListConverter toDomainList;
     private final UserEntityToUserConverter toDomain;
     private final UserToUserEntityConverter toEntity;
     private final UserRepository userRepository;
@@ -59,5 +63,17 @@ public class UserServiceImpl implements UserService {
 
         log.info(">> Response >> [userEntity:{}]", userEntity);
         return toDomain.convert(userEntity);
+    }
+
+    @Override
+    public List<User> findAll() {
+        log.info(">> Finding all User <<");
+        List<UserEntity> entityList = userRepository.findAll();
+
+        log.info(">> Converting all to Domain >> [entityList:{}]", entityList);
+        List<User> userList = toDomainList.convert(entityList);
+
+        log.info(">> Response >> [userList:{}]", userList);
+        return userList;
     }
 }
