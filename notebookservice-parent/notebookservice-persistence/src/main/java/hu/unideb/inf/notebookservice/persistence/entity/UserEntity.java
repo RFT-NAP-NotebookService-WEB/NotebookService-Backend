@@ -1,6 +1,6 @@
 package hu.unideb.inf.notebookservice.persistence.entity;
 
-import hu.unideb.inf.notebookservice.commons.pojo.enumeration.UserRole;
+import hu.unideb.inf.notebookservice.commons.enumeration.UserRole;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,8 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.UserColumnName.*;
-import static hu.unideb.inf.notebookservice.commons.pojo.table.TableName.TABLE_NAME_USER;
+import static hu.unideb.inf.notebookservice.commons.table.ColumnName.UserColumnName.*;
+import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_USER;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

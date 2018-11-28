@@ -14,8 +14,8 @@ import javax.persistence.Table;
 
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.BrandColumName.COLUMN_NAME_NAME;
-import static hu.unideb.inf.notebookservice.commons.pojo.table.TableName.TABLE_NAME_BRAND;
+import static hu.unideb.inf.notebookservice.commons.table.ColumnName.BrandColumName.COLUMN_NAME_NAME;
+import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_BRAND;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

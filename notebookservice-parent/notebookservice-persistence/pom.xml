@@ -9,6 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <name>NotebookService-Persistence</name>
+
     <artifactId>notebookservice-persistence</artifactId>
 
     <dependencies>
@@ -43,7 +45,7 @@
         </dependency>
         <dependency>
             <groupId>hu.unideb.inf</groupId>
-            <artifactId>notebookservice-commons-pojo</artifactId>
+            <artifactId>notebookservice-commons</artifactId>
         </dependency>
     </dependencies>
 </project>

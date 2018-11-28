@@ -14,8 +14,8 @@ import javax.persistence.Table;
 
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.ModificationColumnName.*;
-import static hu.unideb.inf.notebookservice.commons.pojo.table.TableName.TABLE_NAME_MODIFICATION;
+import static hu.unideb.inf.notebookservice.commons.table.ColumnName.ModificationColumnName.*;
+import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_MODIFICATION;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

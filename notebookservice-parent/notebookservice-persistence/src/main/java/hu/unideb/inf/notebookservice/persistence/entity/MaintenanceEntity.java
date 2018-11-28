@@ -1,6 +1,6 @@
 package hu.unideb.inf.notebookservice.persistence.entity;
 
-import hu.unideb.inf.notebookservice.commons.pojo.enumeration.Status;
+import hu.unideb.inf.notebookservice.commons.enumeration.Status;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,13 +19,13 @@ import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.ModificationColumnName.COLUMN_NAME_MODIFICATION_ID;
-import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.ProductColumnName.COLUMN_NAME_PRODUCT_ID;
-import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.ReferencedColumName.REFERENCED_COLUM_NAME_ID;
-import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.ServiceColumnName.*;
-import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.UserColumnName.COLUMN_NAME_USER_ID;
-import static hu.unideb.inf.notebookservice.commons.pojo.table.TableName.TABLE_NAME_SERVICE;
-import static hu.unideb.inf.notebookservice.commons.pojo.table.TableName.TABLE_NAME_SERVICE_HAS_MODIFICATION;
+import static hu.unideb.inf.notebookservice.commons.table.ColumnName.ModificationColumnName.COLUMN_NAME_MODIFICATION_ID;
+import static hu.unideb.inf.notebookservice.commons.table.ColumnName.ProductColumnName.COLUMN_NAME_PRODUCT_ID;
+import static hu.unideb.inf.notebookservice.commons.table.ColumnName.ReferencedColumName.REFERENCED_COLUM_NAME_ID;
+import static hu.unideb.inf.notebookservice.commons.table.ColumnName.ServiceColumnName.*;
+import static hu.unideb.inf.notebookservice.commons.table.ColumnName.UserColumnName.COLUMN_NAME_USER_ID;
+import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_SERVICE;
+import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_SERVICE_HAS_MODIFICATION;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

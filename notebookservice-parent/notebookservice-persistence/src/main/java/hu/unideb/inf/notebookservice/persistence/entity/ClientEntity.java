@@ -14,8 +14,8 @@ import javax.persistence.Table;
 
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.pojo.table.ColumnName.ClientColumnName.*;
-import static hu.unideb.inf.notebookservice.commons.pojo.table.TableName.TABLE_NAME_CLIENT;
+import static hu.unideb.inf.notebookservice.commons.table.ColumnName.ClientColumnName.*;
+import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_CLIENT;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
