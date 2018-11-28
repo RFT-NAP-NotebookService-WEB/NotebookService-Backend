@@ -18,6 +18,7 @@ services:
     depends_on:
       - database
   notebookservice:
+    build: notebookservice-web
     container_name: app
     image: notebookservice-web
     restart: always
