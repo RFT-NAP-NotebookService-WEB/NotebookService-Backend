@@ -27,7 +27,7 @@ public class BrandRestController {
 
     private final BrandService brandService;
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = BRAND_ADD, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> responseEntity(@RequestBody BrandRequest brandRequest) {
         ResponseEntity result;
@@ -40,14 +40,14 @@ public class BrandRestController {
         return result;
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = BRAND_GET_ONE)
     public ResponseEntity<?> getBrandByID(@PathVariable Long id) {
         Brand foundBrand = brandService.findById(id);
         return ResponseEntity.accepted().body(foundBrand);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = BRAND_GET_ALL)
     public ResponseEntity<?> getAllBrand() {
         List<Brand> allBrand = brandService.findAll();

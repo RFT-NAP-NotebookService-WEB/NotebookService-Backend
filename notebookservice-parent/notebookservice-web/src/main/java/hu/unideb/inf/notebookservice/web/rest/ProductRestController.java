@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +26,7 @@ public class ProductRestController {
 
     private final ProductService productService;
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = PRODUCT_ADD, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> responseEntity(@RequestBody ProductRequest productRequest) {
         ResponseEntity result;
@@ -40,14 +39,14 @@ public class ProductRestController {
         return result;
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = PRODUCT_GET_ONE)
     public ResponseEntity<?> getProductByID(@PathVariable Long id) {
         Product foundProduct = productService.findById(id);
         return ResponseEntity.accepted().body(foundProduct);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = PRODUCT_GET_ALL)
     public ResponseEntity<?> getAllProduct() {
         List<Product> allProduct = productService.findAll();

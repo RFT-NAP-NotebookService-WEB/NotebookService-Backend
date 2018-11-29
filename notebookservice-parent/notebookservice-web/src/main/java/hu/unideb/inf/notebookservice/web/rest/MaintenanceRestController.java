@@ -27,7 +27,7 @@ public class MaintenanceRestController {
 
     private final MaintenanceService maintenanceService;
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = MAINTENANCE_ADD, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> responseEntity(@RequestBody MaintenanceRequest maintenanceRequest) {
         ResponseEntity result;
@@ -40,14 +40,14 @@ public class MaintenanceRestController {
         return result;
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = MAINTENANCE_GET_ONE)
     public ResponseEntity<?> getMaintenanceByID(@PathVariable Long id) {
         Maintenance foundMaintenance = maintenanceService.findById(id);
         return ResponseEntity.accepted().body(foundMaintenance);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = MAINTENANCE_GET_ALL)
     public ResponseEntity<?> getAllMaintenance() {
         List<Maintenance> allMaintenance = maintenanceService.findAll();

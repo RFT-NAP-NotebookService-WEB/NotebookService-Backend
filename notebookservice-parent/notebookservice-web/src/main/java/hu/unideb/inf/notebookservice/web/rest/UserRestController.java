@@ -41,7 +41,7 @@ public class UserRestController {
     }
 
     @GetMapping(LoginPath.LOGIN_URL)
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public UserResponse authorizeUser() {
         User user = SecurityContextHolder.getUser();
         return UserResponse.builder()
@@ -52,7 +52,7 @@ public class UserRestController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = "/users")
+//    @GetMapping(path = "/users")
     public ResponseEntity<?> getAllBrand() {
         List<User> allUser = userService.findAll();
         return ResponseEntity.accepted().body(allUser);
