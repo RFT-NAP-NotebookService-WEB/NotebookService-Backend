@@ -1,6 +1,6 @@
 package hu.unideb.inf.notebookservice.commons.enumeration;
 
-public enum  UserRole {
+public enum UserRole {
     MANAGER,
     SERVICE
 }

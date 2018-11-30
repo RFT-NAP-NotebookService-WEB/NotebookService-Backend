@@ -15,7 +15,9 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.table.ColumnName.UserColumnName.*;
+import static hu.unideb.inf.notebookservice.commons.table.ColumnName.UserColumnName.COLUMN_NAME_PASSWORD;
+import static hu.unideb.inf.notebookservice.commons.table.ColumnName.UserColumnName.COLUMN_NAME_ROLE;
+import static hu.unideb.inf.notebookservice.commons.table.ColumnName.UserColumnName.COLUMN_NAME_USERNAME;
 import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_USER;
 
 @Data
