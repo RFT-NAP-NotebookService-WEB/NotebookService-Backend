@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.path.BrandPath.BRAND_ADD;
-import static hu.unideb.inf.notebookservice.commons.path.BrandPath.BRAND_GET_ALL;
-import static hu.unideb.inf.notebookservice.commons.path.BrandPath.BRAND_GET_ONE;
+import static hu.unideb.inf.notebookservice.commons.path.BrandPath.BRAND_URL;
+import static hu.unideb.inf.notebookservice.commons.path.BrandPath.BRANDS_URL;
+import static hu.unideb.inf.notebookservice.commons.path.BrandPath.BRAND_ID_URL;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,7 +27,7 @@ public class BrandRestController {
     private final BrandService brandService;
 
 //    @PreAuthorize("isAuthenticated()")
-    @RequestMapping(value = BRAND_ADD, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = BRAND_URL, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> responseEntity(@RequestBody BrandRequest brandRequest) {
         ResponseEntity result;
         try {
@@ -41,14 +40,14 @@ public class BrandRestController {
     }
 
 //    @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = BRAND_GET_ONE)
+    @GetMapping(path = BRAND_ID_URL)
     public ResponseEntity<?> getBrandByID(@PathVariable Long id) {
         Brand foundBrand = brandService.findById(id);
         return ResponseEntity.accepted().body(foundBrand);
     }
 
 //    @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = BRAND_GET_ALL)
+    @GetMapping(path = BRANDS_URL)
     public ResponseEntity<?> getAllBrand() {
         List<Brand> allBrand = brandService.findAll();
         return ResponseEntity.accepted().body(allBrand);

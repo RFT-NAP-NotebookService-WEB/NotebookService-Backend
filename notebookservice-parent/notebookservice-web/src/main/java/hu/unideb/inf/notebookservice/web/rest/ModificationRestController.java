@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.path.ModificationPath.MODIFICATION_ADD;
-import static hu.unideb.inf.notebookservice.commons.path.ModificationPath.MODIFICATION_GET_ALL;
-import static hu.unideb.inf.notebookservice.commons.path.ModificationPath.MODIFICATION_GET_ONE;
+import static hu.unideb.inf.notebookservice.commons.path.ModificationPath.MODIFICATION_URL;
+import static hu.unideb.inf.notebookservice.commons.path.ModificationPath.MODIFICATIONS_URL;
+import static hu.unideb.inf.notebookservice.commons.path.ModificationPath.MODIFICATION_ID_URL;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,7 +27,7 @@ public class ModificationRestController {
     private final ModificationService modificationService;
 
 //    @PreAuthorize("isAuthenticated()")
-    @RequestMapping(value = MODIFICATION_ADD, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = MODIFICATION_URL, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> responseEntity(@RequestBody ModificationRequest modificationRequest) {
         ResponseEntity result;
         try {
@@ -40,14 +40,14 @@ public class ModificationRestController {
     }
 
 //    @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = MODIFICATION_GET_ONE)
+    @GetMapping(path = MODIFICATION_ID_URL)
     public ResponseEntity<?> getModificationByID(@PathVariable Long id) {
         Modification foundModification = modificationService.findById(id);
         return ResponseEntity.accepted().body(foundModification);
     }
 
 //    @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = MODIFICATION_GET_ALL)
+    @GetMapping(path = MODIFICATIONS_URL)
     public ResponseEntity<?> getAllModification() {
         List<Modification> allModification = modificationService.findAll();
         return ResponseEntity.accepted().body(allModification);

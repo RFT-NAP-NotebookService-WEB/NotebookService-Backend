@@ -1,6 +1,5 @@
 package hu.unideb.inf.notebookservice.web.rest;
 
-import hu.unideb.inf.notebookservice.commons.path.LoginPath;
 import hu.unideb.inf.notebookservice.commons.request.RegistrationRequest;
 import hu.unideb.inf.notebookservice.commons.response.UserResponse;
 import hu.unideb.inf.notebookservice.service.domain.User;
@@ -10,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.path.RegistrationPath.REGISTRATION_URL;
+import static hu.unideb.inf.notebookservice.commons.path.UserPath.LOGIN_URL;
+import static hu.unideb.inf.notebookservice.commons.path.UserPath.REGISTRATION_URL;
+import static hu.unideb.inf.notebookservice.commons.path.UserPath.USERS_URL;
 
 
 @RestController
@@ -40,7 +40,7 @@ public class UserRestController {
         return result;
     }
 
-    @GetMapping(LoginPath.LOGIN_URL)
+    @GetMapping(LOGIN_URL)
 //    @PreAuthorize("isAuthenticated()")
     public UserResponse authorizeUser() {
         User user = SecurityContextHolder.getUser();
@@ -51,8 +51,8 @@ public class UserRestController {
                 .build();
     }
 
-    @PreAuthorize("isAuthenticated()")
-//    @GetMapping(path = "/users")
+//    @PreAuthorize("isAuthenticated()")
+    @GetMapping(USERS_URL)
     public ResponseEntity<?> getAllBrand() {
         List<User> allUser = userService.findAll();
         return ResponseEntity.accepted().body(allUser);

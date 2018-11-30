@@ -1,0 +1,459 @@
+swagger: '2.0'
+info:
+  description: >-
+  version: 0.0.1-SNAPSHOT
+  title: Notebook Service
+basePath: /v2
+tags:
+  - name: User
+    description: Operations about user
+  - name: Brand
+    description: Everything about brands
+  - name: Modifications
+    description: Everything about modifications
+  - name: Client
+    description: Operations about clients
+  - name: Product
+    description: Operations about products
+  - name: Maintenance
+    description: Maintenance operations
+schemes:
+  - http
+paths:
+  /register:
+    post:
+      tags:
+        - User
+      summary: Add a new user
+      description: ''
+      operationId: addUser
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: User object that needs to be added
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: Successful registration
+  /login:
+    get:
+      tags:
+        - User
+      summary: Logs user into the system
+      description: ''
+      operationId: loginUser
+      produces:
+        - application/json
+      parameters:
+        - name: username
+          in: query
+          description: The user name for login
+          required: true
+          type: string
+        - name: password
+          in: query
+          description: The password for login in clear text
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Invalid username/password supplied
+  /users:
+    get:
+      tags:
+        - Users
+      summary: Find all user
+      description: Returns a list of user
+      operationId: getAllUser
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+  
+  /brand:
+    post:
+      tags:
+        - Brand
+      summary: Add a new brand
+      description: ''
+      operationId: addBrand
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Brand object that needs to be added
+          required: true
+          schema:
+            $ref: '#/definitions/Brand'
+      responses:
+        '200':
+          description: Successfully added
+  /brand/{id}:
+    get:
+      tags:
+        - Brand
+      summary: Find brand by ID
+      description: Returns a single brand
+      operationId: getBrandById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of brand to return
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Brand'
+  /brands:
+    get:
+      tags:
+        - Brand
+      summary: Find all brand
+      description: Returns a list of brand
+      operationId: getAllBrand
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Brand'
+
+  /modification:
+    post:
+      tags:
+        - Modifications
+      summary: Add a new modification
+      description: ''
+      operationId: addModification
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Modification object that needs to be added
+          required: true
+          schema:
+            $ref: '#/definitions/Modification'
+      responses:
+        '200':
+          description: Successfully added
+  /modification/{id}:
+    get:
+      tags:
+        - Modifications
+      summary: Find modification by ID
+      description: Returns a single modification
+      operationId: getModificationById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of modification to return
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Modification'
+  /modifications:
+    get:
+      tags:
+        - Modifications
+      summary: Find all modification
+      description: Returns a list of modification
+      operationId: getAllModification
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Modification'
+  
+  /client:
+    post:
+      tags:
+        - Client
+      summary: Add a new client
+      description: ''
+      operationId: addClient
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Client object that needs to be added
+          required: true
+          schema:
+            $ref: '#/definitions/Client'
+      responses:
+        '200':
+          description: Successfully added
+  /client/{id}:
+    get:
+      tags:
+        - Client
+      summary: Find client by ID
+      description: Returns a single client
+      operationId: getClientById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of client to return
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Client'
+  /clients:
+    get:
+      tags:
+        - Client
+      summary: Find all client
+      description: Returns a list of client
+      operationId: getAllClient
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Client'
+  
+  /product:
+    post:
+      tags:
+        - Product
+      summary: Add a new product
+      description: ''
+      operationId: addProduct
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Product object that needs to be added
+          required: true
+          schema:
+            $ref: '#/definitions/Product'
+      responses:
+        '200':
+          description: Successfully added
+  /product/{id}:
+    get:
+      tags:
+        - Product
+      summary: Find product by ID
+      description: Returns a single product
+      operationId: getProductById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of product to return
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Product'
+  /products:
+    get:
+      tags:
+        - Product
+      summary: Find all product
+      description: Returns a list of product
+      operationId: getAllProduct
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+
+  /maintenance:
+    post:
+      tags:
+        - Maintenance
+      summary: Add a new maintenance
+      description: ''
+      operationId: addMaintenance
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Maintenance object that needs to be added
+          required: true
+          schema:
+            $ref: '#/definitions/Maintenance'
+      responses:
+        '200':
+          description: Successfully added
+  /maintenance/{id}:
+    get:
+      tags:
+        - Maintenance
+      summary: Find maintenance by ID
+      description: Returns a single maintenance
+      operationId: getMaintenanceById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of maintenance to return
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Maintenance'
+  /maintenances:
+    get:
+      tags:
+        - Maintenance
+      summary: Find all maintenance
+      description: Returns a list of maintenance
+      operationId: getAllMaintenance
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Maintenance'
+    
+definitions:
+  Brand:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+  Client:
+    type: object
+    properties:
+      id:
+        type: integer
+      firstname:
+        type: string
+      lastname:
+        type: string
+      email:
+        type: string
+      phone:
+        type: string
+  Maintenance:
+    type: object
+    properties:
+      id:
+        type: integer
+      startdate:
+        type: string
+        format: date
+      enddate:
+        type: string
+        format: date
+      status:
+        type: string
+        enum:
+          - RECORDED
+          - IN_PROGRESS
+          - DONE
+      fault:
+        type: string
+      user:
+        $ref: '#/definitions/User'
+      product:
+        $ref: '#/definitions/Product'
+      modification:
+        type: array
+        items:
+          $ref: '#/definitions/Modification'
+  Modification:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      price:
+        type: integer
+  Product:
+    type: object
+    properties:
+      id:
+        type: integer
+      description:
+        type: string
+      type:
+        type: string
+      brand:
+        $ref: '#/definitions/Brand'
+      client:
+        $ref: '#/definitions/Client'
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+      username:
+        type: string
+      password:
+        type: string
+      userrole:
+        type: string
+        enum:
+          - MANAGER
+          - SERVICE

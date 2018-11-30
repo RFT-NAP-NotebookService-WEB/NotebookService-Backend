@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.path.ClientPath.CLIENT_ADD;
-import static hu.unideb.inf.notebookservice.commons.path.ClientPath.CLIENT_GET_ALL;
-import static hu.unideb.inf.notebookservice.commons.path.ClientPath.CLIENT_GET_ONE;
+import static hu.unideb.inf.notebookservice.commons.path.ClientPath.CLIENT_URL;
+import static hu.unideb.inf.notebookservice.commons.path.ClientPath.CLIENTS_URL;
+import static hu.unideb.inf.notebookservice.commons.path.ClientPath.CLIENT_ID_URL;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,7 +27,7 @@ public class ClientRestController {
     private final ClientService clientService;
 
 //    @PreAuthorize("isAuthenticated()")
-    @RequestMapping(value = CLIENT_ADD, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = CLIENT_URL, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> responseEntity(@RequestBody ClientRequest clientRequest) {
         ResponseEntity result;
         try {
@@ -40,14 +40,14 @@ public class ClientRestController {
     }
 
 //    @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = CLIENT_GET_ONE)
+    @GetMapping(path = CLIENT_ID_URL)
     public ResponseEntity<?> getClientByID(@PathVariable Long id) {
         Client foundClient = clientService.findById(id);
         return ResponseEntity.accepted().body(foundClient);
     }
 
 //    @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = CLIENT_GET_ALL)
+    @GetMapping(path = CLIENTS_URL)
     public ResponseEntity<?> getAllClient() {
         List<Client> allClient = clientService.findAll();
         return ResponseEntity.accepted().body(allClient);

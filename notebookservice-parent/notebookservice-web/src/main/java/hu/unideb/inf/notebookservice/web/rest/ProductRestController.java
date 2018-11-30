@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.path.ProductPath.PRODUCT_ADD;
-import static hu.unideb.inf.notebookservice.commons.path.ProductPath.PRODUCT_GET_ALL;
-import static hu.unideb.inf.notebookservice.commons.path.ProductPath.PRODUCT_GET_ONE;
+import static hu.unideb.inf.notebookservice.commons.path.ProductPath.PRODUCT_URL;
+import static hu.unideb.inf.notebookservice.commons.path.ProductPath.PRODUCTS_URL;
+import static hu.unideb.inf.notebookservice.commons.path.ProductPath.PRODUCT_ID_URL;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,7 +27,7 @@ public class ProductRestController {
     private final ProductService productService;
 
 //    @PreAuthorize("isAuthenticated()")
-    @RequestMapping(value = PRODUCT_ADD, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = PRODUCT_URL, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> responseEntity(@RequestBody ProductRequest productRequest) {
         ResponseEntity result;
         try {
@@ -40,14 +40,14 @@ public class ProductRestController {
     }
 
 //    @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = PRODUCT_GET_ONE)
+    @GetMapping(path = PRODUCT_ID_URL)
     public ResponseEntity<?> getProductByID(@PathVariable Long id) {
         Product foundProduct = productService.findById(id);
         return ResponseEntity.accepted().body(foundProduct);
     }
 
 //    @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = PRODUCT_GET_ALL)
+    @GetMapping(path = PRODUCTS_URL)
     public ResponseEntity<?> getAllProduct() {
         List<Product> allProduct = productService.findAll();
         return ResponseEntity.accepted().body(allProduct);
