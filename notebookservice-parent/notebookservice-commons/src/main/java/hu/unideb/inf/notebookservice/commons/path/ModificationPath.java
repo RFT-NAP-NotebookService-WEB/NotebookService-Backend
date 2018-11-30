@@ -2,9 +2,9 @@ package hu.unideb.inf.notebookservice.commons.path;
 
 public final class ModificationPath {
 
-    public static final String MODIFICATION_ADD = "/modification/add";
+    public static final String MODIFICATION_URL = "/modification";
 
-    public static final String MODIFICATION_GET_ONE = "/modification/get/{id}";
+    public static final String MODIFICATION_ID_URL = "/modification/{id}";
 
-    public static final String MODIFICATION_GET_ALL = "/modification/get/all";
+    public static final String MODIFICATIONS_URL = "/modifications";
 }

@@ -1,9 +1,10 @@
 package hu.unideb.inf.notebookservice.commons.path;
 
 public final class ClientPath {
-    public static final String CLIENT_ADD = "/client/add";
 
-    public static final String CLIENT_GET_ONE = "/client/get/{id}";
+    public static final String CLIENT_URL = "/client";
 
-    public static final String CLIENT_GET_ALL = "/client/get/all";
+    public static final String CLIENT_ID_URL = "/client/{id}";
+
+    public static final String CLIENTS_URL = "/clients";
 }
