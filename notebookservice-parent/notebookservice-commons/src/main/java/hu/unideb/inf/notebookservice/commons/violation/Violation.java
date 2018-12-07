@@ -13,5 +13,5 @@ public class Violation {
 
     private String field;
 
-    private String violationMassage;
+    private String violationMessage;
 }

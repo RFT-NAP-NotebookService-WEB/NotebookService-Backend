@@ -58,7 +58,7 @@ public class ProductRestController {
         ViolationResponse violationResponse = ViolationResponse.builder()
                 .errors(Collections.singletonList(Violation.builder()
                         .field(TABLE_NAME_PRODUCT)
-                        .violationMassage(exception.getMessage())
+                        .violationMessage(exception.getMessage())
                         .build()))
                 .build();
 
@@ -71,7 +71,7 @@ public class ProductRestController {
         ViolationResponse violationResponse = ViolationResponse.builder()
                 .errors(Collections.singletonList(Violation.builder()
                         .field(TABLE_NAME_PRODUCT)
-                        .violationMassage(exception.getMessage())
+                        .violationMessage(exception.getMessage())
                         .build()))
                 .build();
 

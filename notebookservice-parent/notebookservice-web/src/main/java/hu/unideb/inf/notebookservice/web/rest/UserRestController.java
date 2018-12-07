@@ -64,7 +64,7 @@ public class UserRestController {
         ViolationResponse violationResponse = ViolationResponse.builder()
                 .errors(Collections.singletonList(Violation.builder()
                         .field(TABLE_NAME_USER)
-                        .violationMassage(exception.getMessage())
+                        .violationMessage(exception.getMessage())
                         .build()))
                 .build();
 
@@ -77,7 +77,7 @@ public class UserRestController {
         ViolationResponse violationResponse = ViolationResponse.builder()
                 .errors(Collections.singletonList(Violation.builder()
                         .field(TABLE_NAME_USER)
-                        .violationMassage(exception.getMessage())
+                        .violationMessage(exception.getMessage())
                         .build()))
                 .build();
 

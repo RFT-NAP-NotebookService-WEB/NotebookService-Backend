@@ -58,7 +58,7 @@ public class MaintenanceRestController {
         ViolationResponse violationResponse = ViolationResponse.builder()
                 .errors(Collections.singletonList(Violation.builder()
                         .field(TABLE_NAME_MAINTENANCE)
-                        .violationMassage(exception.getMessage())
+                        .violationMessage(exception.getMessage())
                         .build()))
                 .build();
 
@@ -71,7 +71,7 @@ public class MaintenanceRestController {
         ViolationResponse violationResponse = ViolationResponse.builder()
                 .errors(Collections.singletonList(Violation.builder()
                         .field(TABLE_NAME_MAINTENANCE)
-                        .violationMassage(exception.getMessage())
+                        .violationMessage(exception.getMessage())
                         .build()))
                 .build();
 
