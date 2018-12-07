@@ -17,4 +17,14 @@ public class ClientRequestToClientConverter implements Converter<ClientRequest, 
                 .phone(clientRequest.getPhone())
                 .build();
     }
+
+    public Client convert(Long id, ClientRequest clientRequest) {
+        return Client.builder()
+                .id(id)
+                .firstName(clientRequest.getFirstName())
+                .lastName(clientRequest.getLastName())
+                .email(clientRequest.getEmail())
+                .phone(clientRequest.getPhone())
+                .build();
+    }
 }

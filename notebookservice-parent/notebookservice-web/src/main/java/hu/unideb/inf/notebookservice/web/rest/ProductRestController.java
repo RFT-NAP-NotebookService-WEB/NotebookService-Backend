@@ -54,9 +54,9 @@ public class ProductRestController {
         return ResponseEntity.accepted().body(allProduct);
     }
 
-    @PutMapping(PRODUCT_URL)
-    public ResponseEntity<Product> updateClient(@RequestBody Product product) {
-        return ResponseEntity.ok(productService.update(product));
+    @PutMapping(PRODUCT_ID_URL)
+    public ResponseEntity<Product> updateClient(@PathVariable Long id, @RequestBody ProductRequest product) {
+        return ResponseEntity.ok(productService.update(id, product));
     }
 
     @ExceptionHandler(AlreadyExistsException.class)

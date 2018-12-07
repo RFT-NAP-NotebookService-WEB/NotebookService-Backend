@@ -14,4 +14,11 @@ public class BrandRequestToBrandConverter implements Converter<BrandRequest, Bra
                 .name(brandRequest.getName())
                 .build();
     }
+
+    public Brand convert(Long id, BrandRequest brandRequest) {
+        return Brand.builder()
+                .id(id)
+                .name(brandRequest.getName())
+                .build();
+    }
 }

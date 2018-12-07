@@ -15,4 +15,12 @@ public class ModificationRequestToModificationConverter implements Converter<Mod
                 .price(modificationRequest.getPrice())
                 .build();
     }
+
+    public Modification convert(Long id, ModificationRequest modificationRequest) {
+        return Modification.builder()
+                .id(id)
+                .name(modificationRequest.getName())
+                .price(modificationRequest.getPrice())
+                .build();
+    }
 }

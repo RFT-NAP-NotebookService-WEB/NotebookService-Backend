@@ -51,13 +51,12 @@ public class ModificationServiceImpl implements ModificationService {
     }
 
     @Override
-    public Modification update(Modification modification) {
-        Modification found = findById(modification.getId());
+    public Modification update(Long id, ModificationRequest modification) {
+        findById(id);
+        Modification newModification = fromRequest.convert(id, modification);
 
-        found = modification;
-
-        log.info(">> Converting Domain >> [found:{}]", found);
-        ModificationEntity converted = toEntity.convert(found);
+        log.info(">> Converting Domain >> [newModification:{}]", newModification);
+        ModificationEntity converted = toEntity.convert(newModification);
 
         log.info(">> Saving Entity >> [converted:{}]", converted);
         ModificationEntity saved = repository.save(converted);

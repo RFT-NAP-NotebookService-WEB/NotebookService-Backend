@@ -47,9 +47,9 @@ public class ClientRestController {
         return ResponseEntity.accepted().body(foundClient);
     }
 
-    @PutMapping(CLIENT_URL)
-    public ResponseEntity<Client> updateClient(@RequestBody Client client) {
-        return ResponseEntity.ok(clientService.update(client));
+    @PutMapping(CLIENT_ID_URL)
+    public ResponseEntity<Client> updateClient(@PathVariable Long id, @RequestBody ClientRequest client) {
+        return ResponseEntity.ok(clientService.update(id, client));
     }
 
 //    @PreAuthorize("isAuthenticated()")

@@ -15,6 +15,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +28,7 @@ import java.util.List;
 import static hu.unideb.inf.notebookservice.commons.path.UserPath.LOGIN_URL;
 import static hu.unideb.inf.notebookservice.commons.path.UserPath.REGISTRATION_URL;
 import static hu.unideb.inf.notebookservice.commons.path.UserPath.USERS_URL;
+import static hu.unideb.inf.notebookservice.commons.path.UserPath.USER_ID_URL;
 import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_USER;
 
 
@@ -50,6 +53,11 @@ public class UserRestController {
                 .userRole(user.getUserRole())
                 .build();
         return ResponseEntity.ok(new SuccessResponse(user, null));
+    }
+
+    @PutMapping(USER_ID_URL)
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody UserRequest userRequest) {
+        return ResponseEntity.ok(userService.update(id, userRequest));
     }
 
     @GetMapping(USERS_URL)

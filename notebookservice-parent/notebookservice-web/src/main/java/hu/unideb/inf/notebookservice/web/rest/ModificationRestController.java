@@ -54,9 +54,9 @@ public class ModificationRestController {
         return ResponseEntity.accepted().body(allModification);
     }
 
-    @PutMapping(MODIFICATION_URL)
-    public ResponseEntity<Modification> updateClient(@RequestBody Modification modification) {
-        return ResponseEntity.ok(modificationService.update(modification));
+    @PutMapping(MODIFICATION_ID_URL)
+    public ResponseEntity<Modification> updateClient(@PathVariable Long id, @RequestBody ModificationRequest modification) {
+        return ResponseEntity.ok(modificationService.update(id, modification));
     }
 
     @ExceptionHandler(AlreadyExistsException.class)

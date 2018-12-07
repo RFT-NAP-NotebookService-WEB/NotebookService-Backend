@@ -43,13 +43,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product update(Product product) {
-        Product found = findById(product.getId());
+    public Product update(Long id, ProductRequest product) {
+        findById(id);
+        Product newProduct = fromRequest.convert(id, product);
 
-        found = product;
-
-        log.info(">> Converting Domain >> [found:{}]", found);
-        ProductEntity converted = toEntity.convert(found);
+        log.info(">> Converting Domain >> [newProduct:{}]", newProduct);
+        ProductEntity converted = toEntity.convert(newProduct);
 
         log.info(">> Saving Entity >> [converted:{}]", converted);
         ProductEntity saved = repository.save(converted);

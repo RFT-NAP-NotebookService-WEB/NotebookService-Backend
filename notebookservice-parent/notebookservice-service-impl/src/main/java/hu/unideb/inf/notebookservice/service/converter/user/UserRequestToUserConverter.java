@@ -21,4 +21,14 @@ public class UserRequestToUserConverter implements Converter<UserRequest, User> 
                 .userRole(UserRole.valueOf(userRequest.getUserRole()))
                 .build();
     }
+
+    public User convert(Long id, UserRequest userRequest) {
+        return User.builder()
+                .id(id)
+                .username(userRequest.getUsername())
+                .password(PW_ENCODE.encode(userRequest.getPassword()))
+                .passwordConfirm(PW_ENCODE.encode(userRequest.getPasswordConfirm()))
+                .userRole(UserRole.valueOf(userRequest.getUserRole()))
+                .build();
+    }
 }

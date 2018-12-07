@@ -29,4 +29,17 @@ public class MaintenanceRequestToMaintenanceConverter implements Converter<Maint
                 .user(userService.findById(maintenanceRequest.getUserId()))
                 .build();
     }
+
+    public Maintenance convert(Long id, MaintenanceRequest maintenanceRequest) {
+        return Maintenance.builder()
+                .id(id)
+                .product(productService.findById(maintenanceRequest.getProductId()))
+                .status(maintenanceRequest.getStatus())
+                .startDate(maintenanceRequest.getStartDate())
+                .endDate(maintenanceRequest.getEndDate())
+                .fault(maintenanceRequest.getFault())
+                .modifications(idToList.convert(maintenanceRequest.getModificationsId()))
+                .user(userService.findById(maintenanceRequest.getUserId()))
+                .build();
+    }
 }

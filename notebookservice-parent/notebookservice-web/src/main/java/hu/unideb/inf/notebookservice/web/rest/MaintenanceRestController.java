@@ -54,9 +54,9 @@ public class MaintenanceRestController {
         return ResponseEntity.accepted().body(allMaintenance);
     }
 
-    @PutMapping(MAINTENANCE_URL)
-    public ResponseEntity<Maintenance> updateClient(@RequestBody Maintenance maintenance) {
-        return ResponseEntity.ok(maintenanceService.update(maintenance));
+    @PutMapping(MAINTENANCE_ID_URL)
+    public ResponseEntity<Maintenance> updateClient(@PathVariable Long id, @RequestBody MaintenanceRequest maintenance) {
+        return ResponseEntity.ok(maintenanceService.update(id, maintenance));
     }
 
     @ExceptionHandler(AlreadyExistsException.class)

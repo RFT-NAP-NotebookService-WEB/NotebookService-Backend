@@ -24,4 +24,15 @@ public class ProductRequestToProductConverter implements Converter<ProductReques
                 .client(clientService.findById(productRequest.getClientId()))
                 .build();
     }
+
+    public Product convert(Long id, ProductRequest productRequest) {
+        return Product.builder()
+                .id(id)
+                .brand(brandService.findById(productRequest.getBrandId()))
+                .type(productRequest.getType())
+                .description(productRequest.getDescription())
+                .client(clientService.findById(productRequest.getClientId()))
+                .build();
+    }
+
 }

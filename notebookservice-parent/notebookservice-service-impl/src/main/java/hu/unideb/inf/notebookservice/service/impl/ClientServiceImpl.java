@@ -50,12 +50,12 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client update(Client client) {
-        Client found = findById(client.getId());
-        found = client;
+    public Client update(Long id, ClientRequest client) {
+        findById(id);
+        Client newClient = fromRequest.convert(id, client);
 
-        log.info(">> Converting Domain >> [found:{}]", found);
-        ClientEntity converted = toEntity.convert(found);
+        log.info(">> Converting Domain >> [newClient:{}]", newClient);
+        ClientEntity converted = toEntity.convert(newClient);
 
         log.info(">> Saving Entity >> [converted:{}]", converted);
         ClientEntity saved = repository.save(converted);

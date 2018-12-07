@@ -54,12 +54,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User update(User user) {
-        User found = findById(user.getId());
-        found = user;
+    public User update(Long id, UserRequest user) {
+        findById(id);
+        User newUser = fromRequest.convert(id, user);
 
-        log.info(">> Convert to Entity >> [found:{}]", found);
-        UserEntity converted = toEntity.convert(found);
+        log.info(">> Convert to Entity >> [newUser:{}]", newUser);
+        UserEntity converted = toEntity.convert(newUser);
 
         log.info(">> Saving to Database >> [converted:{}]", converted);
         UserEntity savedUser = repository.save(converted);

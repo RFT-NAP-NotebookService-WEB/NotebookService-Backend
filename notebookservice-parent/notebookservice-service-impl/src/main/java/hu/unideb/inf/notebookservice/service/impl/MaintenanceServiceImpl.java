@@ -57,12 +57,12 @@ public class MaintenanceServiceImpl implements MaintenanceService {
     }
 
     @Override
-    public Maintenance update(Maintenance maintenance) {
-        Maintenance found = findById(maintenance.getId());
-        found = maintenance;
+    public Maintenance update(Long id, MaintenanceRequest maintenance) {
+        findById(id);
+        Maintenance newMaintenance = fromRequest.convert(id, maintenance);
 
-        log.info(">> Converting Domain >> [found:{}]", found);
-        MaintenanceEntity converted = toEntity.convert(found);
+        log.info(">> Converting Domain >> [newMaintenance:{}]", newMaintenance);
+        MaintenanceEntity converted = toEntity.convert(newMaintenance);
 
         log.info(">> Saving Entity >> [converted:{}]", converted);
         MaintenanceEntity saved = repository.save(converted);

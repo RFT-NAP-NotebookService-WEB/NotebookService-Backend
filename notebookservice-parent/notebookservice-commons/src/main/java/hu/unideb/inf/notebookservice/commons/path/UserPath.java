@@ -8,5 +8,5 @@ public final class UserPath {
 
     public static final String USERS_URL = "/users";
 
-    public static final String USER_URL = "/user";
+    public static final String USER_ID_URL = "/user/{id}";
 }

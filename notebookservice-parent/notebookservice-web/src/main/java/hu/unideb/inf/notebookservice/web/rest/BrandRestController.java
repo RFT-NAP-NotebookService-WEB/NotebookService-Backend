@@ -47,9 +47,9 @@ public class BrandRestController {
         return ResponseEntity.accepted().body(foundBrand);
     }
 
-    @PutMapping(BRAND_URL)
-    public ResponseEntity<Brand> updateBrand(@RequestBody Brand brand) {
-        return ResponseEntity.ok(brandService.update(brand));
+    @PutMapping(BRAND_ID_URL)
+    public ResponseEntity<Brand> updateBrand(@PathVariable Long id, @RequestBody BrandRequest brand) {
+        return ResponseEntity.ok(brandService.update(id, brand));
     }
 
 //    @PreAuthorize("isAuthenticated()")

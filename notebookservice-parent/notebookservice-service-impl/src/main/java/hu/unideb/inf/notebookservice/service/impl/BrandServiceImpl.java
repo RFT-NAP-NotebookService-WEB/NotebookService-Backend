@@ -43,10 +43,10 @@ public class BrandServiceImpl implements BrandService {
         log.info(">> Converting Request >> [brandRequest:{}]", brandRequest.getName());
         Brand brand = fromRequest.convert(brandRequest);
 
-        log.info(">> Converting Domain >> [brand:{}]", brand.getName());
+        log.info(">> Converting Domain >> [brand:{}]", brand);
         BrandEntity converted = toEntity.convert(brand);
 
-        log.info(">> Saving Entity >> [converted:{}]", converted.getName());
+        log.info(">> Saving Entity >> [converted:{}]", converted);
         BrandEntity saved = repository.save(converted);
 
         log.info(">> Response >> [saved:{}]", saved.getName());
@@ -54,12 +54,12 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public Brand update(Brand brand) {
-        Brand found = findById(brand.getId());
-        found = brand;
+    public Brand update(Long id, BrandRequest brand) {
+        findById(id);
+        Brand newBrand = fromRequest.convert(id, brand);
 
-        log.info(">> Converting Domain >> [found:{}]", found);
-        BrandEntity converted = toEntity.convert(found);
+        log.info(">> Converting Domain >> [newBrand:{}]", newBrand);
+        BrandEntity converted = toEntity.convert(newBrand);
 
         log.info(">> Saving Entity >> [converted:{}]", converted);
         BrandEntity saved = repository.save(converted);
@@ -74,13 +74,13 @@ public class BrandServiceImpl implements BrandService {
         log.info(">> Searching in Database >> [id:{}]", id);
         Optional<BrandEntity> foundBrand = repository.findById(id);
 
-        log.info(">> Converting to Domain >> [foundBrand:{}]", foundBrand.get().getName());
+        log.info(">> Converting to Domain >> [foundBrand:{}]", foundBrand);
         Brand convertedBrand = toDomain.convert(
                 foundBrand.orElseThrow(
                         () -> new NotFoundException(
                                 String.format(ID_NOT_FOUND_EXCEPTION, id))));
 
-        log.info(">> Response >> [convertedBrand:{}]", convertedBrand.getName());
+        log.info(">> Response >> [convertedBrand:{}]", convertedBrand);
         return convertedBrand;
     }
 
