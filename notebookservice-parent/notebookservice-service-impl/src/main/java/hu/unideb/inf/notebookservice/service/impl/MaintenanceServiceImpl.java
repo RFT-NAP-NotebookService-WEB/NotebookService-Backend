@@ -58,7 +58,17 @@ public class MaintenanceServiceImpl implements MaintenanceService {
 
     @Override
     public Maintenance update(Maintenance maintenance) {
-        return null;
+        Maintenance found = findById(maintenance.getId());
+        found = maintenance;
+
+        log.info(">> Converting Domain >> [found:{}]", found);
+        MaintenanceEntity converted = toEntity.convert(found);
+
+        log.info(">> Saving Entity >> [converted:{}]", converted);
+        MaintenanceEntity saved = repository.save(converted);
+
+        log.info(">> Response >> [saved:{}]", saved);
+        return toDomain.convert(saved);
     }
 
     @Override

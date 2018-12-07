@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RegistrationRequestToUserConverter implements Converter<UserRequest, User> {
+public class UserRequestToUserConverter implements Converter<UserRequest, User> {
 
     private static final BCryptPasswordEncoder PW_ENCODE = new BCryptPasswordEncoder();
 

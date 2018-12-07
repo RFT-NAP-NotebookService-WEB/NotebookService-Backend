@@ -5,9 +5,9 @@ import hu.unideb.inf.notebookservice.commons.exeptions.NotFoundException;
 import hu.unideb.inf.notebookservice.commons.request.UserRequest;
 import hu.unideb.inf.notebookservice.persistence.entity.UserEntity;
 import hu.unideb.inf.notebookservice.persistence.repository.UserRepository;
-import hu.unideb.inf.notebookservice.service.converter.user.RegistrationRequestToUserConverter;
 import hu.unideb.inf.notebookservice.service.converter.user.UserEntityListToUserListConverter;
 import hu.unideb.inf.notebookservice.service.converter.user.UserEntityToUserConverter;
+import hu.unideb.inf.notebookservice.service.converter.user.UserRequestToUserConverter;
 import hu.unideb.inf.notebookservice.service.converter.user.UserToUserEntityConverter;
 import hu.unideb.inf.notebookservice.service.domain.User;
 import hu.unideb.inf.notebookservice.service.interfaces.UserService;
@@ -31,18 +31,17 @@ public class UserServiceImpl implements UserService {
     private final UserEntityToUserConverter toDomain;
     private final UserToUserEntityConverter toEntity;
     private final UserRepository repository;
-    private final RegistrationRequestToUserConverter converter;
+    private final UserRequestToUserConverter fromRequest;
 
     @Override
     public User save(UserRequest userRequest) {
-
         Optional<UserEntity> entity = repository.findByUsername(userRequest.getUsername());
         if (entity.isPresent()) {
             throw new AlreadyExistsException(String.format(ALREADY_EXISTS_EXCEPTION, userRequest.getUsername()));
         }
 
         log.info(">> Convert to Domain >> [userRequest:{}]", userRequest);
-        User user = converter.convert(userRequest);
+        User user = fromRequest.convert(userRequest);
 
         log.info(">> Convert to Entity >> [user:{}]", user);
         UserEntity userEntity = toEntity.convert(user);
@@ -56,7 +55,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User update(User user) {
-        return null;
+        User found = findById(user.getId());
+        found = user;
+
+        log.info(">> Convert to Entity >> [found:{}]", found);
+        UserEntity converted = toEntity.convert(found);
+
+        log.info(">> Saving to Database >> [converted:{}]", converted);
+        UserEntity savedUser = repository.save(converted);
+
+        log.info(">> Response >> [User:{}]", savedUser);
+        return toDomain.convert(savedUser);
     }
 
     @Override

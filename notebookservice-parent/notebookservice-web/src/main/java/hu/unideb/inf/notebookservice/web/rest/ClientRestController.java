@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,6 +45,11 @@ public class ClientRestController {
     public ResponseEntity<Client> getClientByID(@PathVariable Long id) {
         Client foundClient = clientService.findById(id);
         return ResponseEntity.accepted().body(foundClient);
+    }
+
+    @PutMapping(CLIENT_URL)
+    public ResponseEntity<Client> updateClient(@RequestBody Client client) {
+        return ResponseEntity.ok(clientService.update(client));
     }
 
 //    @PreAuthorize("isAuthenticated()")

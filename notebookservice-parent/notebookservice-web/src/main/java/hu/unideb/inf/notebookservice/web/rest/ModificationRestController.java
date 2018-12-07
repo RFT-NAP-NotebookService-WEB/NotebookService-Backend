@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,6 +52,11 @@ public class ModificationRestController {
     public ResponseEntity<List<Modification>> getAllModification() {
         List<Modification> allModification = modificationService.findAll();
         return ResponseEntity.accepted().body(allModification);
+    }
+
+    @PutMapping(MODIFICATION_URL)
+    public ResponseEntity<Modification> updateClient(@RequestBody Modification modification) {
+        return ResponseEntity.ok(modificationService.update(modification));
     }
 
     @ExceptionHandler(AlreadyExistsException.class)

@@ -55,7 +55,17 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public Brand update(Brand brand) {
-        return null;
+        Brand found = findById(brand.getId());
+        found = brand;
+
+        log.info(">> Converting Domain >> [found:{}]", found);
+        BrandEntity converted = toEntity.convert(found);
+
+        log.info(">> Saving Entity >> [converted:{}]", converted);
+        BrandEntity saved = repository.save(converted);
+
+        log.info(">> Response >> [saved:{}]", saved);
+        return toDomain.convert(saved);
     }
 
     @Override

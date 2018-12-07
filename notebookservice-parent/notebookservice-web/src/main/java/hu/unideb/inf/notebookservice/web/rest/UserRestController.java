@@ -52,8 +52,8 @@ public class UserRestController {
         return ResponseEntity.ok(new SuccessResponse(user, null));
     }
 
-//    @PreAuthorize("isAuthenticated()")
     @GetMapping(USERS_URL)
+//    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<List<User>> getAll() {
         List<User> allUser = userService.findAll();
         return ResponseEntity.accepted().body(allUser);
