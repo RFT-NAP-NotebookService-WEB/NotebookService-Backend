@@ -22,17 +22,17 @@ import java.util.List;
 import static hu.unideb.inf.notebookservice.commons.table.ColumnName.ModificationColumnName.COLUMN_NAME_MODIFICATION_ID;
 import static hu.unideb.inf.notebookservice.commons.table.ColumnName.ProductColumnName.COLUMN_NAME_PRODUCT_ID;
 import static hu.unideb.inf.notebookservice.commons.table.ColumnName.ReferencedColumName.REFERENCED_COLUM_NAME_ID;
-import static hu.unideb.inf.notebookservice.commons.table.ColumnName.ServiceColumnName.*;
+import static hu.unideb.inf.notebookservice.commons.table.ColumnName.MaintenanceColumnName.*;
 import static hu.unideb.inf.notebookservice.commons.table.ColumnName.UserColumnName.COLUMN_NAME_USER_ID;
-import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_SERVICE;
-import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_SERVICE_HAS_MODIFICATION;
+import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_MAINTENANCE;
+import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_MAINTENANCE_HAS_MODIFICATION;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @NoArgsConstructor
 @Entity
-@Table(name = TABLE_NAME_SERVICE)
+@Table(name = TABLE_NAME_MAINTENANCE)
 public class MaintenanceEntity extends BaseEntity<Long> {
 
     @Column(name = COLUMN_NAME_START_DATE)
@@ -57,9 +57,9 @@ public class MaintenanceEntity extends BaseEntity<Long> {
 
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = TABLE_NAME_SERVICE_HAS_MODIFICATION,
+    @JoinTable(name = TABLE_NAME_MAINTENANCE_HAS_MODIFICATION,
             joinColumns = @JoinColumn(name = COLUMN_NAME_MODIFICATION_ID, referencedColumnName = REFERENCED_COLUM_NAME_ID),
-            inverseJoinColumns = @JoinColumn(name = COLUMN_NAME_SERVICE_ID, referencedColumnName = REFERENCED_COLUM_NAME_ID))
+            inverseJoinColumns = @JoinColumn(name = COLUMN_NAME_MAINTENANCE_ID, referencedColumnName = REFERENCED_COLUM_NAME_ID))
     private List<ModificationEntity> modifications;
 
     @Builder

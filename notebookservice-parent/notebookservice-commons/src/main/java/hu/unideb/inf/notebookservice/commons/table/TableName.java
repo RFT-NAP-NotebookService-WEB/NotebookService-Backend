@@ -8,7 +8,7 @@ public class TableName {
 
     public static final String TABLE_NAME_USER = "user";
 
-    public static final String TABLE_NAME_SERVICE = "interfaces";
+    public static final String TABLE_NAME_MAINTENANCE = "maintenance";
 
     public static final String TABLE_NAME_MODIFICATION = "modification";
 
@@ -18,5 +18,5 @@ public class TableName {
 
     public static final String TABLE_NAME_BRAND = "brand";
 
-    public static final String TABLE_NAME_SERVICE_HAS_MODIFICATION = "service_has_modification";
+    public static final String TABLE_NAME_MAINTENANCE_HAS_MODIFICATION = "service_has_modification";
 }

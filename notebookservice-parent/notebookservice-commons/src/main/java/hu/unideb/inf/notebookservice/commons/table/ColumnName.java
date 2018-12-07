@@ -19,9 +19,9 @@ public class ColumnName {
     }
 
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
-    public static final class ServiceColumnName {
+    public static final class MaintenanceColumnName {
 
-        public static final String COLUMN_NAME_SERVICE_ID = "service_id";
+        public static final String COLUMN_NAME_MAINTENANCE_ID = "maintenance_id";
 
         public static final String COLUMN_NAME_STATUS = "status";
 
