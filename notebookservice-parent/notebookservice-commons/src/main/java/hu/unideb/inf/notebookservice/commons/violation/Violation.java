@@ -1,4 +1,4 @@
-package hu.unideb.inf.notebookservice.commons.request;
+package hu.unideb.inf.notebookservice.commons.violation;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthenticationRequest {
+public class Violation {
 
-    private String username;
+    private String field;
 
-    private String password;
+    private String violationMassage;
 }
