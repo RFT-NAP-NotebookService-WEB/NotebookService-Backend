@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,7 +53,7 @@ public class ProductRestController {
         return ResponseEntity.accepted().body(allProduct);
     }
 
-    @PutMapping(PRODUCT_ID_URL)
+    @RequestMapping(value = PRODUCT_ID_URL, method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Product> updateClient(@PathVariable Long id, @RequestBody ProductRequest product) {
         return ResponseEntity.ok(productService.update(id, product));
     }

@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,7 +53,7 @@ public class MaintenanceRestController {
         return ResponseEntity.accepted().body(allMaintenance);
     }
 
-    @PutMapping(MAINTENANCE_ID_URL)
+    @RequestMapping(value = MAINTENANCE_ID_URL, method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Maintenance> updateClient(@PathVariable Long id, @RequestBody MaintenanceRequest maintenance) {
         return ResponseEntity.ok(maintenanceService.update(id, maintenance));
     }

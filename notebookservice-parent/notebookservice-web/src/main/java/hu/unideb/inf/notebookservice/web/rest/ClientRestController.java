@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,7 +46,7 @@ public class ClientRestController {
         return ResponseEntity.accepted().body(foundClient);
     }
 
-    @PutMapping(CLIENT_ID_URL)
+    @RequestMapping(value = CLIENT_ID_URL, method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Client> updateClient(@PathVariable Long id, @RequestBody ClientRequest client) {
         return ResponseEntity.ok(clientService.update(id, client));
     }
