@@ -5,7 +5,7 @@
     <parent>
         <artifactId>notebookservice-parent</artifactId>
         <groupId>hu.unideb.inf</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -57,7 +57,7 @@
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>1.3.6</version>
                 <configuration>
-                    <repository>${project.artifactId}</repository>
+                    <repository>evet/${project.artifactId}:${notebookservice.version}</repository>
                 </configuration>
             </plugin>
             <plugin>

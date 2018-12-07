@@ -18,9 +18,8 @@ services:
     depends_on:
       - database
   notebookservice:
-    build: notebookservice-web
     container_name: app
-    image: notebookservice-web
+    image: evet/notebookservice-web
     restart: always
     depends_on:
       - database
