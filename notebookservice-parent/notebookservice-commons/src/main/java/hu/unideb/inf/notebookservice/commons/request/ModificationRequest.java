@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class ModificationRequest {
 
     private String name;
-    private int price;
+    private Long price;
 }

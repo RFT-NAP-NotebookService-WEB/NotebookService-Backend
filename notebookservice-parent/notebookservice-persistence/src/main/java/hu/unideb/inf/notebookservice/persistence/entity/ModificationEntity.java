@@ -29,13 +29,13 @@ public class ModificationEntity extends BaseEntity<Long> {
     private String name;
 
     @Column(name = COLUMN_NAME_PRICE)
-    private int price;
+    private Long price;
 
     @ManyToMany(mappedBy = "modifications",fetch = FetchType.LAZY)
     private List<MaintenanceEntity> maintenances;
 
     @Builder
-    public ModificationEntity(Long id, String name, int price) {
+    public ModificationEntity(Long id, String name, Long price) {
         super(id);
         this.name = name;
         this.price = price;

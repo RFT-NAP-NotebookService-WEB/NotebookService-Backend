@@ -13,5 +13,5 @@ public class Modification {
 
     private Long id;
     private String name;
-    private int price;
+    private Long price;
 }
