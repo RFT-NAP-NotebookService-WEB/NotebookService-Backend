@@ -1,24 +1,24 @@
 package hu.unideb.inf.notebookservice.service.converter.user;
 
 import hu.unideb.inf.notebookservice.commons.enumeration.UserRole;
-import hu.unideb.inf.notebookservice.commons.request.RegistrationRequest;
+import hu.unideb.inf.notebookservice.commons.request.UserRequest;
 import hu.unideb.inf.notebookservice.service.domain.User;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RegistrationRequestToUserConverter implements Converter<RegistrationRequest, User> {
+public class RegistrationRequestToUserConverter implements Converter<UserRequest, User> {
 
     private static final BCryptPasswordEncoder PW_ENCODE = new BCryptPasswordEncoder();
 
     @Override
-    public User convert(RegistrationRequest registrationRequest) {
+    public User convert(UserRequest userRequest) {
         return User.builder()
-                .username(registrationRequest.getUsername())
-                .password(PW_ENCODE.encode(registrationRequest.getPassword()))
-                .passwordConfirm(PW_ENCODE.encode(registrationRequest.getPasswordConfirm()))
-                .userRole(UserRole.valueOf(registrationRequest.getUserRole()))
+                .username(userRequest.getUsername())
+                .password(PW_ENCODE.encode(userRequest.getPassword()))
+                .passwordConfirm(PW_ENCODE.encode(userRequest.getPasswordConfirm()))
+                .userRole(UserRole.valueOf(userRequest.getUserRole()))
                 .build();
     }
 }

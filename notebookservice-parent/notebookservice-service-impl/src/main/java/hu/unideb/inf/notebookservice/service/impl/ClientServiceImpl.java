@@ -1,5 +1,7 @@
 package hu.unideb.inf.notebookservice.service.impl;
 
+import hu.unideb.inf.notebookservice.commons.exeptions.AlreadyExistsException;
+import hu.unideb.inf.notebookservice.commons.exeptions.NotFoundException;
 import hu.unideb.inf.notebookservice.commons.request.ClientRequest;
 import hu.unideb.inf.notebookservice.persistence.entity.ClientEntity;
 import hu.unideb.inf.notebookservice.persistence.repository.ClientRepository;
@@ -14,6 +16,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
+import static hu.unideb.inf.notebookservice.commons.error.ErrorTemplate.ID_NOT_FOUND_EXCEPTION;
 
 @Slf4j
 @Service
@@ -27,7 +32,12 @@ public class ClientServiceImpl implements ClientService {
     private final ClientEntityListToClientConverter toDomainList;
 
     @Override
-    public void saveClient(ClientRequest clientRequest) {
+    public Client save(ClientRequest clientRequest) {
+
+        Optional<ClientEntity> entity = repository.findByEmail(clientRequest.getEmail());
+        if (entity.isPresent()) {
+            throw new AlreadyExistsException(entity.get().getId().toString());
+        }
 
         log.info(">> Converting Request >> [clientRequest:{}]", clientRequest);
         Client client = fromRequest.convert(clientRequest);
@@ -35,19 +45,26 @@ public class ClientServiceImpl implements ClientService {
         log.info(">> Converting Domain >> [client:{}]", client);
         ClientEntity converted = toEntity.convert(client);
 
-        assert converted != null;
         log.info(">> Saving Entity >> [converted:{}]", converted);
-        repository.save(converted);
+        return toDomain.convert(repository.save(converted));
+    }
+
+    @Override
+    public Client update(Client client) {
+        return null;
     }
 
     @Override
     public Client findById(Long id) {
 
         log.info(">> Searching in Database >> [id:{}]", id);
-        ClientEntity foundClient = repository.getOne(id);
+        Optional<ClientEntity> foundClient = repository.findById(id);
 
         log.info(">> Converting to Domain >> [foundClient:{}]", foundClient);
-        Client convertedClient = toDomain.convert(foundClient);
+        Client convertedClient = toDomain.convert(
+                foundClient.orElseThrow(
+                        () -> new NotFoundException(
+                                String.format(ID_NOT_FOUND_EXCEPTION, id))));
 
         log.info(">> Response >> [convertedClient:{}]", convertedClient);
         return convertedClient;
@@ -59,10 +76,10 @@ public class ClientServiceImpl implements ClientService {
         log.info(">> Finding all Brand <<");
         List<ClientEntity> entityList = repository.findAll();
 
-        log.info(">> Converting all to Domain >> [entityList:{}]", entityList);
+        log.info(">> Converting all to Domain <<");
         List<Client> clientList = toDomainList.convert(entityList);
 
-        log.info(">> Response >> [clientList:{}]", clientList);
+        log.info(">> Response <<");
         return clientList;
     }
 }

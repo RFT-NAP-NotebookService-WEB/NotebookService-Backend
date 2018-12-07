@@ -1,6 +1,8 @@
 package hu.unideb.inf.notebookservice.service.impl;
 
-import hu.unideb.inf.notebookservice.commons.request.RegistrationRequest;
+import hu.unideb.inf.notebookservice.commons.exeptions.AlreadyExistsException;
+import hu.unideb.inf.notebookservice.commons.exeptions.NotFoundException;
+import hu.unideb.inf.notebookservice.commons.request.UserRequest;
 import hu.unideb.inf.notebookservice.persistence.entity.UserEntity;
 import hu.unideb.inf.notebookservice.persistence.repository.UserRepository;
 import hu.unideb.inf.notebookservice.service.converter.user.RegistrationRequestToUserConverter;
@@ -14,6 +16,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
+import static hu.unideb.inf.notebookservice.commons.error.ErrorTemplate.ALREADY_EXISTS_EXCEPTION;
+import static hu.unideb.inf.notebookservice.commons.error.ErrorTemplate.ID_NOT_FOUND_EXCEPTION;
+import static hu.unideb.inf.notebookservice.commons.error.ErrorTemplate.NAME_NOT_FOUND_EXCEPTION;
 
 @Slf4j
 @Service
@@ -23,57 +30,69 @@ public class UserServiceImpl implements UserService {
     private final UserEntityListToUserListConverter toDomainList;
     private final UserEntityToUserConverter toDomain;
     private final UserToUserEntityConverter toEntity;
-    private final UserRepository userRepository;
+    private final UserRepository repository;
     private final RegistrationRequestToUserConverter converter;
 
     @Override
-    public void register(RegistrationRequest registrationRequest) {
+    public User save(UserRequest userRequest) {
 
-        log.info(">> Convert to Domain >> [registrationRequest:{}]", registrationRequest);
-        User convertedUser = converter.convert(registrationRequest);
+        Optional<UserEntity> entity = repository.findByUsername(userRequest.getUsername());
+        if (entity.isPresent()) {
+            throw new AlreadyExistsException(String.format(ALREADY_EXISTS_EXCEPTION, userRequest.getUsername()));
+        }
 
-        log.info(">> Register request >> [convertedUser:{}]", convertedUser);
-        saveUser(convertedUser);
-    }
-
-    @Override
-    public void saveUser(User user) {
+        log.info(">> Convert to Domain >> [userRequest:{}]", userRequest);
+        User user = converter.convert(userRequest);
 
         log.info(">> Convert to Entity >> [user:{}]", user);
         UserEntity userEntity = toEntity.convert(user);
 
         log.info(">> Saving to Database >> [userEntity:{}]", userEntity);
-        userRepository.save(userEntity);
+        UserEntity savedUser = repository.save(userEntity);
+
+        log.info(">> Response >> [User:{}]", savedUser);
+        return toDomain.convert(savedUser);
+    }
+
+    @Override
+    public User update(User user) {
+        return null;
     }
 
     @Override
     public User findById(Long id) {
 
         log.info(">> Searching in Database >> [id:{}]", id);
-        UserEntity userEntity = userRepository.getOne(id);
+        Optional<UserEntity> userEntity = repository.findById(id);
 
         log.info(">> Response >> [userEntity:{}]", userEntity);
-        return toDomain.convert(userEntity);
+        return toDomain.convert(
+                userEntity.orElseThrow(
+                        () -> new NotFoundException(
+                                String.format(ID_NOT_FOUND_EXCEPTION, id))));
     }
 
     @Override
     public User findByUsername(String username) {
         log.info(">> Searching in Database >> [username:{}]", username);
-        UserEntity userEntity = userRepository.findByUsername(username);
+        Optional<UserEntity> userEntity = repository.findByUsername(username);
 
         log.info(">> Response >> [userEntity:{}]", userEntity);
-        return toDomain.convert(userEntity);
+        return toDomain.convert(
+                userEntity.orElseThrow(
+                        () -> new NotFoundException(
+                                String.format(NAME_NOT_FOUND_EXCEPTION, username))));
     }
 
     @Override
     public List<User> findAll() {
         log.info(">> Finding all User <<");
-        List<UserEntity> entityList = userRepository.findAll();
+        List<UserEntity> entityList = repository.findAll();
 
-        log.info(">> Converting all to Domain >> [entityList:{}]", entityList);
+        log.info(">> Converting all to Domain <<");
         List<User> userList = toDomainList.convert(entityList);
 
-        log.info(">> Response >> [userList:{}]", userList);
+        log.info(">> Response <<");
         return userList;
     }
 }

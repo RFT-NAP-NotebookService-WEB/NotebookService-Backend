@@ -1,5 +1,7 @@
 package hu.unideb.inf.notebookservice.service.impl;
 
+import hu.unideb.inf.notebookservice.commons.exeptions.AlreadyExistsException;
+import hu.unideb.inf.notebookservice.commons.exeptions.NotFoundException;
 import hu.unideb.inf.notebookservice.commons.request.ModificationRequest;
 import hu.unideb.inf.notebookservice.persistence.entity.ModificationEntity;
 import hu.unideb.inf.notebookservice.persistence.repository.ModificationRepository;
@@ -14,6 +16,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
+import static hu.unideb.inf.notebookservice.commons.error.ErrorTemplate.ALREADY_EXISTS_EXCEPTION;
+import static hu.unideb.inf.notebookservice.commons.error.ErrorTemplate.ID_NOT_FOUND_EXCEPTION;
 
 @Slf4j
 @Service
@@ -27,7 +33,12 @@ public class ModificationServiceImpl implements ModificationService {
     private final ModificationRepository repository;
 
     @Override
-    public void saveModification(ModificationRequest modificationRequest) {
+    public Modification save(ModificationRequest modificationRequest) {
+
+        Optional<ModificationEntity> entity = repository.findByName(modificationRequest.getName());
+        if (entity.isPresent()) {
+            throw new AlreadyExistsException(String.format(ALREADY_EXISTS_EXCEPTION, modificationRequest.getName()));
+        }
 
         log.info(">> Converting Request >> [modificationRequest:{}]", modificationRequest);
         Modification modification = fromRequest.convert(modificationRequest);
@@ -35,18 +46,25 @@ public class ModificationServiceImpl implements ModificationService {
         log.info(">> Converting Domain >> [modification:{}]", modification);
         ModificationEntity converted = toEntity.convert(modification);
 
-        assert converted != null;
         log.info(">> Saving Entity >> [converted:{}]", converted);
-        repository.save(converted);
+        return toDomain.convert(repository.save(converted));
+    }
+
+    @Override
+    public Modification update(Modification modification) {
+        return null;
     }
 
     @Override
     public Modification findById(Long id) {
         log.info(">> Searching in Database >> [id:{}]", id);
-        ModificationEntity foundModification = repository.getOne(id);
+        Optional<ModificationEntity> foundModification = repository.findById(id);
 
         log.info(">> Converting to Domain >> [foundModification:{}]", foundModification);
-        Modification convertedModification = toDomain.convert(foundModification);
+        Modification convertedModification = toDomain.convert(
+                foundModification.orElseThrow(
+                        () -> new NotFoundException(
+                                String.format(ID_NOT_FOUND_EXCEPTION, id))));
 
         log.info(">> Response >> [convertedModification:{}]", convertedModification);
         return convertedModification;
@@ -58,10 +76,10 @@ public class ModificationServiceImpl implements ModificationService {
         log.info(">> Finding all Brand <<");
         List<ModificationEntity> entityList = repository.findAll();
 
-        log.info(">> Converting all to Domain >> [entityList:{}]", entityList);
+        log.info(">> Converting all to Domain <<");
         List<Modification> modificationList = toDomainList.convert(entityList);
 
-        log.info(">> Response >> [modificationList:{}]", modificationList);
+        log.info(">> Response <<");
         return modificationList;
     }
 }
