@@ -8,7 +8,6 @@ import hu.unideb.inf.notebookservice.commons.violation.Violation;
 import hu.unideb.inf.notebookservice.commons.violation.ViolationResponse;
 import hu.unideb.inf.notebookservice.service.domain.User;
 import hu.unideb.inf.notebookservice.service.interfaces.UserService;
-import hu.unideb.inf.notebookservice.web.security.SecurityContextHolder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collections;
 import java.util.List;
 
-import static hu.unideb.inf.notebookservice.commons.path.UserPath.LOGIN_URL;
 import static hu.unideb.inf.notebookservice.commons.path.UserPath.REGISTRATION_URL;
 import static hu.unideb.inf.notebookservice.commons.path.UserPath.USERS_URL;
 import static hu.unideb.inf.notebookservice.commons.path.UserPath.USER_ID_URL;
@@ -42,17 +40,17 @@ public class UserRestController {
         return ResponseEntity.ok(new SuccessResponse(userService.save(userRequest), null));
     }
 
-    @GetMapping(LOGIN_URL)
+//    @GetMapping(LOGIN_URL)
 //    @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<SuccessResponse> authorizeUser() {
-        User user = SecurityContextHolder.getUser();
-        user = User.builder()
-                .id(user.getId())
-                .username(user.getUsername())
-                .userRole(user.getUserRole())
-                .build();
-        return ResponseEntity.ok(new SuccessResponse(user, null));
-    }
+//    public ResponseEntity<SuccessResponse> authorizeUser() {
+//        User user = SecurityContextHolder.getUser();
+//        User user = User.builder()
+//                .id(user.getId())
+//                .username(user.getUsername())
+//                .userRole(user.getUserRole())
+//                .build();
+//        return ResponseEntity.ok(new SuccessResponse(user, null));
+//    }
 
     @RequestMapping(value = USER_ID_URL, method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody UserRequest userRequest) {
