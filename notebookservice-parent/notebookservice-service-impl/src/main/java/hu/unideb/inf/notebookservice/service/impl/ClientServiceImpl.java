@@ -87,9 +87,6 @@ public class ClientServiceImpl implements ClientService {
         List<ClientEntity> entityList = repository.findAll();
 
         log.info(">> Converting all to Domain <<");
-        List<Client> clientList = toDomainList.convert(entityList);
-
-        log.info(">> Response <<");
-        return clientList;
+        return toDomainList.convert(entityList);
     }
 }

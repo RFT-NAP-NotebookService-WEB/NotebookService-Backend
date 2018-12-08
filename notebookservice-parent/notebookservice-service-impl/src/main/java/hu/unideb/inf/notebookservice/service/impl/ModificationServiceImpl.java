@@ -87,9 +87,6 @@ public class ModificationServiceImpl implements ModificationService {
         List<ModificationEntity> entityList = repository.findAll();
 
         log.info(">> Converting all to Domain <<");
-        List<Modification> modificationList = toDomainList.convert(entityList);
-
-        log.info(">> Response <<");
-        return modificationList;
+        return toDomainList.convert(entityList);
     }
 }

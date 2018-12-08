@@ -93,9 +93,6 @@ public class MaintenanceServiceImpl implements MaintenanceService {
         List<MaintenanceEntity> entityList = repository.findAll();
 
         log.info(">> Converting all to Domain <<");
-        List<Maintenance> maintenanceList = toDomainList.convert(entityList);
-
-        log.info(">> Response <<");
-        return maintenanceList;
+        return toDomainList.convert(entityList);
     }
 }

@@ -99,9 +99,6 @@ public class UserServiceImpl implements UserService {
         List<UserEntity> entityList = repository.findAll();
 
         log.info(">> Converting all to Domain <<");
-        List<User> userList = toDomainList.convert(entityList);
-
-        log.info(">> Response <<");
-        return userList;
+        return toDomainList.convert(entityList);
     }
 }

@@ -90,10 +90,7 @@ public class BrandServiceImpl implements BrandService {
         log.info(">> Finding all Brand <<");
         List<BrandEntity> entityList = repository.findAll();
 
-        log.info(">> Converting all to Domain <<");
-        List<Brand> brandList = toDomainList.convert(entityList);
-
-        log.info(">> Response <<");
-        return brandList;
+        log.info(">> Converting all to Domain <<", entityList);
+        return toDomainList.convert(entityList);
     }
 }

@@ -1,7 +1,6 @@
 package hu.unideb.inf.notebookservice.web.security;
 
 import hu.unideb.inf.notebookservice.service.domain.User;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Collections;
 
-@Getter
 @RequiredArgsConstructor
 public class NotebookServiceUserDetails implements UserDetails {
 

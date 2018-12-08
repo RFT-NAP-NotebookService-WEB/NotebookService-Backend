@@ -78,9 +78,6 @@ public class ProductServiceImpl implements ProductService {
         List<ProductEntity> entityList = repository.findAll();
 
         log.info(">> Converting all to Domain <<");
-        List<Product> productList = toDomainList.convert(entityList);
-
-        log.info(">> Response <<");
-        return productList;
+        return toDomainList.convert(entityList);
     }
 }

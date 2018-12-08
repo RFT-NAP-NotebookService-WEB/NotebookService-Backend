@@ -1,33 +1,44 @@
 package hu.unideb.inf.notebookservice.web.security;
 
+import hu.unideb.inf.notebookservice.commons.exeptions.NotFoundException;
+import hu.unideb.inf.notebookservice.commons.violation.Violation;
+import hu.unideb.inf.notebookservice.commons.violation.ViolationResponse;
 import hu.unideb.inf.notebookservice.service.domain.User;
 import hu.unideb.inf.notebookservice.service.interfaces.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationServiceException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import javax.persistence.EntityNotFoundException;
+import java.util.Collections;
+
+import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_USER;
 
 @Service
+@RequiredArgsConstructor
 public class NotebookServiceUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user;
-        try {
-            user = userService.findByUsername(username);
-        } catch (EntityNotFoundException e) {
-            throw new UsernameNotFoundException(e.getMessage(), e);
-        } catch (Exception e) {
-            throw new AuthenticationServiceException(
-                    "Error on authenticating internal user.", e);
-        }
+    public UserDetails loadUserByUsername(String username) {
+        User user = userService.findByUsername(username);
         return new NotebookServiceUserDetails(user);
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ViolationResponse> handleUserNotFoundException(NotFoundException exception) {
+        ViolationResponse violationResponse = ViolationResponse.builder()
+                .errors(Collections.singletonList(Violation.builder()
+                        .field(TABLE_NAME_USER)
+                        .violationMessage(exception.getMessage())
+                        .build()))
+                .build();
+
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(violationResponse);
     }
 }
