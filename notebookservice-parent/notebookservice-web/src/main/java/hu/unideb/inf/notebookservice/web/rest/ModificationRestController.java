@@ -33,20 +33,17 @@ public class ModificationRestController {
 
     private final ModificationService modificationService;
 
-//    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = MODIFICATION_URL, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Modification> responseEntity(@RequestBody ModificationRequest modificationRequest) {
         return ResponseEntity.ok(modificationService.save(modificationRequest));
     }
 
-//    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = MODIFICATION_ID_URL)
     public ResponseEntity<Modification> getModificationByID(@PathVariable Long id) {
         Modification foundModification = modificationService.findById(id);
         return ResponseEntity.accepted().body(foundModification);
     }
 
-//    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = MODIFICATIONS_URL)
     public ResponseEntity<List<Modification>> getAllModification() {
         List<Modification> allModification = modificationService.findAll();

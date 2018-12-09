@@ -33,13 +33,11 @@ public class BrandRestController {
 
     private final BrandService brandService;
 
-//    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = BRAND_URL, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Brand> responseEntity(@RequestBody BrandRequest brandRequest) {
         return ResponseEntity.ok(brandService.save(brandRequest));
     }
 
-//    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = BRAND_ID_URL)
     public ResponseEntity<Brand> getBrandByID(@PathVariable Long id) {
         Brand foundBrand = brandService.findById(id);
@@ -51,7 +49,6 @@ public class BrandRestController {
         return ResponseEntity.ok(brandService.update(id, brand));
     }
 
-//    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = BRANDS_URL)
     public ResponseEntity<List<Brand>> getAllBrand() {
         List<Brand> allBrand = brandService.findAll();

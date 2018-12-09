@@ -33,13 +33,11 @@ public class ClientRestController {
 
     private final ClientService clientService;
 
-//    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = CLIENT_URL, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Client> responseEntity(@RequestBody ClientRequest clientRequest) {
         return ResponseEntity.ok(clientService.save(clientRequest));
     }
 
-//    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = CLIENT_ID_URL)
     public ResponseEntity<Client> getClientByID(@PathVariable Long id) {
         Client foundClient = clientService.findById(id);
@@ -51,7 +49,6 @@ public class ClientRestController {
         return ResponseEntity.ok(clientService.update(id, client));
     }
 
-//    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = CLIENTS_URL)
     public ResponseEntity<List<Client>> getAllClient() {
         List<Client> allClient = clientService.findAll();

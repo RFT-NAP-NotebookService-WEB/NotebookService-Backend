@@ -3,12 +3,12 @@ package hu.unideb.inf.notebookservice.web.security;
 import hu.unideb.inf.notebookservice.commons.exeptions.NotFoundException;
 import hu.unideb.inf.notebookservice.commons.violation.Violation;
 import hu.unideb.inf.notebookservice.commons.violation.ViolationResponse;
+import hu.unideb.inf.notebookservice.service.converter.user.UserToUserEntityConverter;
 import hu.unideb.inf.notebookservice.service.domain.User;
 import hu.unideb.inf.notebookservice.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,9 +22,10 @@ import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_U
 public class NotebookServiceUserDetailsService implements UserDetailsService {
 
     private final UserService userService;
+    private final UserToUserEntityConverter userConverter;
 
     @Override
-    public UserDetails loadUserByUsername(String username) {
+    public NotebookServiceUserDetails loadUserByUsername(String username) {
         User user = userService.findByUsername(username);
         return new NotebookServiceUserDetails(user);
     }

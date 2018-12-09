@@ -1,7 +1,7 @@
 package hu.unideb.inf.notebookservice.web.security;
 
 import hu.unideb.inf.notebookservice.service.domain.User;
-import lombok.RequiredArgsConstructor;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,24 +9,32 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Collections;
 
-@RequiredArgsConstructor
+@Data
 public class NotebookServiceUserDetails implements UserDetails {
 
-    private final User user;
+    private String username;
+    private String password;
+    private Collection<? extends GrantedAuthority> authorities;
+
+    NotebookServiceUserDetails(User user) {
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getUserRole().toString()));
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getUserRole().toString()));
+        return authorities;
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return this.username;
     }
 
     @Override

@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static hu.unideb.inf.notebookservice.web.security.JWTConfiguration.HEADER_STRING;
+import static hu.unideb.inf.notebookservice.web.security.JWTConfiguration.SECRET;
+import static hu.unideb.inf.notebookservice.web.security.JWTConfiguration.TOKEN_PREFIX;
+
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
@@ -42,11 +46,11 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-        String token = request.getHeader(JWTConfiguration.HEADER_STRING);
+        String token = request.getHeader(HEADER_STRING);
         if (token != null) {
-            String user = JWT.require(Algorithm.HMAC512(JWTConfiguration.SECRET.getBytes()))
+            String user = JWT.require(Algorithm.HMAC512(SECRET.getBytes()))
                     .build()
-                    .verify(token.replace(JWTConfiguration.TOKEN_PREFIX, ""))
+                    .verify(token.replace(TOKEN_PREFIX, ""))
                     .getSubject();
 
             if (user != null) {

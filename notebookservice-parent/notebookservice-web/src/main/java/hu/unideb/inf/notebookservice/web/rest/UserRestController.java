@@ -40,25 +40,12 @@ public class UserRestController {
         return ResponseEntity.ok(new SuccessResponse(userService.save(userRequest), null));
     }
 
-//    @GetMapping(LOGIN_URL)
-//    @PreAuthorize("isAuthenticated()")
-//    public ResponseEntity<SuccessResponse> authorizeUser() {
-//        User user = SecurityContextHolder.getUser();
-//        User user = User.builder()
-//                .id(user.getId())
-//                .username(user.getUsername())
-//                .userRole(user.getUserRole())
-//                .build();
-//        return ResponseEntity.ok(new SuccessResponse(user, null));
-//    }
-
     @RequestMapping(value = USER_ID_URL, method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody UserRequest userRequest) {
         return ResponseEntity.ok(userService.update(id, userRequest));
     }
 
     @GetMapping(USERS_URL)
-//    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<List<User>> getAll() {
         List<User> allUser = userService.findAll();
         return ResponseEntity.accepted().body(allUser);

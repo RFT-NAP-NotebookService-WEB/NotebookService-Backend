@@ -33,20 +33,17 @@ public class ProductRestController {
 
     private final ProductService productService;
 
-//    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = PRODUCT_URL, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Product> responseEntity(@RequestBody ProductRequest productRequest) {
         return ResponseEntity.ok(productService.save(productRequest));
     }
 
-//    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = PRODUCT_ID_URL)
     public ResponseEntity<Product> getProductByID(@PathVariable Long id) {
         Product foundProduct = productService.findById(id);
         return ResponseEntity.accepted().body(foundProduct);
     }
 
-//    @PreAuthorize("isAuthenticated()")
     @GetMapping(path = PRODUCTS_URL)
     public ResponseEntity<List<Product>> getAllProduct() {
         List<Product> allProduct = productService.findAll();
