@@ -19,7 +19,7 @@ import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_B
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
+@ToString(callSuper = true, exclude = {"products"})
 @NoArgsConstructor
 @Entity
 @Table(name = TABLE_NAME_BRAND)

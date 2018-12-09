@@ -29,7 +29,7 @@ import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_M
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
+@ToString(callSuper = true, exclude = {"user", "product", "modifications"})
 @NoArgsConstructor
 @Entity
 @Table(name = TABLE_NAME_MAINTENANCE)

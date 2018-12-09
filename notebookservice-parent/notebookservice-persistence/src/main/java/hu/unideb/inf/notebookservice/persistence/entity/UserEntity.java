@@ -22,7 +22,7 @@ import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_U
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true, exclude = "password")
+@ToString(callSuper = true, exclude = {"password", "maintenances"})
 @NoArgsConstructor
 @Entity
 @Table(name = TABLE_NAME_USER, uniqueConstraints = @UniqueConstraint(columnNames = COLUMN_NAME_USERNAME))
