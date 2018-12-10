@@ -26,7 +26,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <notebookservice.version>0.1</notebookservice.version>
+        <notebookservice.version>0.2</notebookservice.version>
         <java.version>1.8</java.version>
         <apache.commons.version>3.8.1</apache.commons.version>
         <lombok.version>1.18.2</lombok.version>

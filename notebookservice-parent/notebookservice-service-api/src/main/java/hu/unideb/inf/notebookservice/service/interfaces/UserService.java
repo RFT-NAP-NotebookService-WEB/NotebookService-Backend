@@ -6,4 +6,6 @@ import hu.unideb.inf.notebookservice.service.domain.User;
 public interface UserService extends BaseService<User, UserRequest> {
 
     User findByUsername(String username);
+
+    boolean containsAny();
 }

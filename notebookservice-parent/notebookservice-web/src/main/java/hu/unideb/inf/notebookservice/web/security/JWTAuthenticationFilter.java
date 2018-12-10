@@ -63,6 +63,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withExpiresAt(new Date(System.currentTimeMillis() + JWTConfiguration.EXPIRATION_TIME))
                 .sign(HMAC512(JWTConfiguration.SECRET.getBytes()));
 
+        response.setStatus(HttpServletResponse.SC_ACCEPTED);
         response.getWriter().write(String.format("{ \"token\": \"%s\" }",token));
 
     }
@@ -71,6 +72,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void unsuccessfulAuthentication(HttpServletRequest request,
                                               HttpServletResponse response,
                                               AuthenticationException failed) throws IOException, ServletException {
+        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         response.getWriter().write("{ \"error\": \"Username or password incorrect.\" }");
     }
 }

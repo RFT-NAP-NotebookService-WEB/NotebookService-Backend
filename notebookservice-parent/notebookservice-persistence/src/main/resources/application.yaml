@@ -30,3 +30,7 @@ spring:
 logging:
   level:
     root: info
+admin-user:
+  username: admin
+  password: notebookserviceadmin
+  userrole: SERVICE

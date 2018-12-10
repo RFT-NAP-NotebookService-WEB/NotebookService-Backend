@@ -94,6 +94,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean containsAny() {
+        return repository.anyExists();
+    }
+
+    @Override
     public List<User> findAll() {
         log.info(">> Finding all User <<");
         List<UserEntity> entityList = repository.findAll();
