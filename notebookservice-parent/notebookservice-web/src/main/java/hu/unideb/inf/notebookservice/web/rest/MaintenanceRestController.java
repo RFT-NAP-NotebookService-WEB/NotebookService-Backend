@@ -51,7 +51,7 @@ public class MaintenanceRestController {
     }
 
     @RequestMapping(value = MAINTENANCE_ID_URL, method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Maintenance> updateClient(@PathVariable Long id, @RequestBody MaintenanceRequest maintenance) {
+    public ResponseEntity<Maintenance> updateMaintenance(@PathVariable Long id, @RequestBody MaintenanceRequest maintenance) {
         return ResponseEntity.ok(maintenanceService.update(id, maintenance));
     }
 

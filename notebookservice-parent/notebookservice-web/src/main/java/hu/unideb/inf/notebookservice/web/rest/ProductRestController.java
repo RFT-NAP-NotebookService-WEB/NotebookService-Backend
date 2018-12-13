@@ -51,7 +51,7 @@ public class ProductRestController {
     }
 
     @RequestMapping(value = PRODUCT_ID_URL, method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Product> updateClient(@PathVariable Long id, @RequestBody ProductRequest product) {
+    public ResponseEntity<Product> updateModification(@PathVariable Long id, @RequestBody ProductRequest product) {
         return ResponseEntity.ok(productService.update(id, product));
     }
 

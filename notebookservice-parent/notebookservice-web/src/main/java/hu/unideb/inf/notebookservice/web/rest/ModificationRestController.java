@@ -51,7 +51,7 @@ public class ModificationRestController {
     }
 
     @RequestMapping(value = MODIFICATION_ID_URL, method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Modification> updateClient(@PathVariable Long id, @RequestBody ModificationRequest modification) {
+    public ResponseEntity<Modification> updateModification(@PathVariable Long id, @RequestBody ModificationRequest modification) {
         return ResponseEntity.ok(modificationService.update(id, modification));
     }
 
