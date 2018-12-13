@@ -1,5 +1,6 @@
 package hu.unideb.inf.notebookservice.web.rest;
 
+import hu.unideb.inf.notebookservice.commons.enumeration.Status;
 import hu.unideb.inf.notebookservice.commons.exeptions.AlreadyExistsException;
 import hu.unideb.inf.notebookservice.commons.exeptions.NotFoundException;
 import hu.unideb.inf.notebookservice.commons.request.MaintenanceRequest;
@@ -21,10 +22,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-import static hu.unideb.inf.notebookservice.commons.path.MaintenancePath.MAINTENANCES_URL;
-import static hu.unideb.inf.notebookservice.commons.path.MaintenancePath.MAINTENANCE_ID_URL;
-import static hu.unideb.inf.notebookservice.commons.path.MaintenancePath.MAINTENANCE_URL;
+import static hu.unideb.inf.notebookservice.commons.path.MaintenancePath.*;
 import static hu.unideb.inf.notebookservice.commons.table.TableName.TABLE_NAME_MAINTENANCE;
 
 @RestController
@@ -47,6 +48,18 @@ public class MaintenanceRestController {
     @GetMapping(path = MAINTENANCES_URL)
     public ResponseEntity<List<Maintenance>> getAllMaintenance() {
         List<Maintenance> allMaintenance = maintenanceService.findAll();
+        return ResponseEntity.accepted().body(allMaintenance);
+    }
+
+    @GetMapping(path = MAINTENANCES_URL + WORKING_URL)
+    public ResponseEntity<List<Maintenance>> getNotDoneMaintenance() {
+        List<Maintenance> allMaintenance = maintenanceService.notDone();
+        return ResponseEntity.accepted().body(allMaintenance);
+    }
+
+    @GetMapping(path = MAINTENANCES_URL + DONE_URL)
+    public ResponseEntity<List<Maintenance>> getDoneMaintenance() {
+        List<Maintenance> allMaintenance = maintenanceService.allDone();
         return ResponseEntity.accepted().body(allMaintenance);
     }
 

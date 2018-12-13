@@ -1,5 +1,6 @@
 package hu.unideb.inf.notebookservice.service.impl;
 
+import hu.unideb.inf.notebookservice.commons.enumeration.Status;
 import hu.unideb.inf.notebookservice.commons.exeptions.AlreadyExistsException;
 import hu.unideb.inf.notebookservice.commons.exeptions.NotFoundException;
 import hu.unideb.inf.notebookservice.commons.request.MaintenanceRequest;
@@ -17,8 +18,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static hu.unideb.inf.notebookservice.commons.error.ErrorTemplate.ALREADY_EXISTS_EXCEPTION;
 import static hu.unideb.inf.notebookservice.commons.error.ErrorTemplate.ID_NOT_FOUND_EXCEPTION;
@@ -91,6 +95,26 @@ public class MaintenanceServiceImpl implements MaintenanceService {
     public List<Maintenance> findAll() {
         log.info(">> Finding all Maintenance <<");
         List<MaintenanceEntity> entityList = repository.findAll();
+
+        log.info(">> Converting all to Domain <<");
+        return toDomainList.convert(entityList);
+    }
+
+    @Override
+    public List<Maintenance> allDone() {
+        log.info(">> Finding all Maintenance <<");
+        List<MaintenanceEntity> entityList = repository.findByStatus(Status.DONE);
+
+        log.info(">> Converting all to Domain <<");
+        return toDomainList.convert(entityList);
+    }
+
+    @Override
+    public List<Maintenance> notDone() {
+        log.info(">> Finding all Maintenance <<");
+        List<MaintenanceEntity> inProgressEntityList = repository.findByStatus(Status.IN_PROGRESS);
+        List<MaintenanceEntity> recordedEntityList = repository.findByStatus(Status.RECORDED);
+        List<MaintenanceEntity> entityList = Stream.concat(inProgressEntityList.stream(), recordedEntityList.stream()).collect(Collectors.toList());
 
         log.info(">> Converting all to Domain <<");
         return toDomainList.convert(entityList);
