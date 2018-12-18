@@ -14,7 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import static hu.unideb.inf.notebookservice.commons.path.UserPath.REGISTRATION_URL;
+import static hu.unideb.inf.notebookservice.commons.path.HealthPath.HEALTH_URL;
 
 @Configuration
 @EnableWebSecurity
@@ -34,7 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
-//                .antMatchers(HttpMethod.POST, REGISTRATION_URL).permitAll()
+                .antMatchers(HttpMethod.GET, HEALTH_URL).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
