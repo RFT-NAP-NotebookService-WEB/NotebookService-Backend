@@ -34,10 +34,10 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client save(ClientRequest clientRequest) {
 
-        Optional<ClientEntity> entity = repository.findByEmail(clientRequest.getEmail());
-        if (entity.isPresent()) {
-            throw new AlreadyExistsException(entity.get().getId().toString());
-        }
+//        Optional<ClientEntity> entity = repository.findByEmail(clientRequest.getEmail());
+//        if (entity.isPresent()) {
+//            throw new AlreadyExistsException(entity.get().getId().toString());
+//        }
 
         log.info(">> Converting Request >> [clientRequest:{}]", clientRequest);
         Client client = fromRequest.convert(clientRequest);

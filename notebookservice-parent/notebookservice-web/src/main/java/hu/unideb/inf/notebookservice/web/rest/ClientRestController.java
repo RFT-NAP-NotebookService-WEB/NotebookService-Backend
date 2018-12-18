@@ -55,18 +55,18 @@ public class ClientRestController {
         return ResponseEntity.accepted().body(allClient);
     }
 
-    @ExceptionHandler(AlreadyExistsException.class)
-    public ResponseEntity<ViolationResponse> handleClientAlreadyExistsException(AlreadyExistsException exception) {
-        ViolationResponse violationResponse = ViolationResponse.builder()
-                .errors(Collections.singletonList(Violation.builder()
-                        .field(TABLE_NAME_CLIENT)
-                        .violationMessage(exception.getMessage())
-                        .build()))
-                .build();
-
-        return ResponseEntity.status(HttpStatus.CONFLICT)
-                .body(violationResponse);
-    }
+//    @ExceptionHandler(AlreadyExistsException.class)
+//    public ResponseEntity<ViolationResponse> handleClientAlreadyExistsException(AlreadyExistsException exception) {
+//        ViolationResponse violationResponse = ViolationResponse.builder()
+//                .errors(Collections.singletonList(Violation.builder()
+//                        .field(TABLE_NAME_CLIENT)
+//                        .violationMessage(exception.getMessage())
+//                        .build()))
+//                .build();
+//
+//        return ResponseEntity.status(HttpStatus.CONFLICT)
+//                .body(violationResponse);
+//    }
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ViolationResponse> handleClientNotFoundException(NotFoundException exception) {
